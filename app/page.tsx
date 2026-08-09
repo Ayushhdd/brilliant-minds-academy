@@ -1,39 +1,25 @@
 import Image from "next/image";
 import EnquiryForm from "./EnquiryForm";
+import HeroExperience from "./HeroExperience";
 import RevealOnScroll from "./RevealOnScroll";
+import ResultsShowcase from "./ResultsShowcase";
 
 const journey = [
   {
-    step: "01",
-    word: "Understand",
-    title: "Find the real learning gap.",
-    copy: "We begin with the student’s current level—not assumptions—so every lesson starts from the right point.",
+    step: "01–02",
+    word: "Understand · Simplify",
+    title: "Find the gap. Make the path clear.",
+    copy: "We begin at the student’s level, then turn difficult ideas into connected, clear steps.",
     image: "/academy/journey-find-gap.png",
     imageSide: "right",
   },
   {
-    step: "02",
-    word: "Simplify",
-    title: "Turn difficult ideas into clear steps.",
-    copy: "Concepts are broken down, connected and explained until the student can see the logic behind them.",
-    image: null,
-    imageSide: "right",
-  },
-  {
-    step: "03",
-    word: "Practise",
-    title: "Build skill through the right questions.",
-    copy: "Guided examples lead into independent practice, chapter tests and focused correction.",
+    step: "03–04",
+    word: "Practise · Own it",
+    title: "Practise until the method becomes yours.",
+    copy: "Guided questions, correction and revision build independent skill and lasting confidence.",
     image: "/academy/journey-understand.png",
     imageSide: "left",
-  },
-  {
-    step: "04",
-    word: "Own it",
-    title: "Move from remembering to knowing.",
-    copy: "Revision and recall strengthen understanding until the student can solve with confidence.",
-    image: null,
-    imageSide: "right",
   },
   {
     step: "05",
@@ -70,13 +56,6 @@ const tuitionProgrammes = [
     points: ["Homework guidance", "Foundation strengthening", "Regular revision"],
     tone: "foundation",
   },
-];
-
-const results = [
-  { score: "99/100", name: "Manreet Kaur" },
-  { score: "98/100", name: "Manvir Singh" },
-  { score: "95/100", name: "Prachi Sharma" },
-  { score: "93/100", name: "Ramneek Kaur" },
 ];
 
 const faqs = [
@@ -138,6 +117,17 @@ function BrandLockup({ footer = false }: { footer?: boolean }) {
   );
 }
 
+function DifferenceIcon({ type }: { type: "attention" | "reports" | "doubts" | "concepts" | "teachers" | "faculty" }) {
+  const common = { fill: "none", stroke: "currentColor", strokeLinecap: "round" as const, strokeLinejoin: "round" as const, strokeWidth: 1.65 };
+
+  if (type === "attention") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="11" r="5" {...common} /><path d="M10 31c1.4-6 5-9 10-9s8.6 3 10 9M4 16v15h7M29 16h7v15" {...common} /></svg>;
+  if (type === "reports") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><rect x="10" y="6" width="20" height="28" rx="2" {...common} /><path d="M16 6v-2h8v2M15 16l3 3 6-7M15 26h10" {...common} /></svg>;
+  if (type === "doubts") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="M7 8h26v18H19l-7 7v-7H7zM18 14a3 3 0 1 1 5 2.5c-2 1.3-2.5 2-2.5 4M20.5 23h.01" {...common} /></svg>;
+  if (type === "concepts") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" {...common} /><circle cx="20" cy="20" r="7" {...common} /><path d="m20 20 12-12M27 8h5v5" {...common} /></svg>;
+  if (type === "teachers") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="m7 17 13-7 13 7-13 7zM12 20v7c4.8 4 11.2 4 16 0v-7M33 18v8" {...common} /><circle cx="33" cy="28" r="1.6" {...common} /></svg>;
+  return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 7h10c3 0 5 2 5 5v21c0-3-2-5-5-5H8zM32 7H22c-3 0-5 2-5 5v21c0-3 2-5 5-5h10zM12 13h6M26 13h3M12 18h6M26 18h3" {...common} /></svg>;
+}
+
 export default function Home() {
   return (
     <main id="main-content" tabIndex={-1}>
@@ -171,52 +161,30 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero" id="home">
-        <div className="heroTexture" aria-hidden="true" />
-        <div className="heroGlow" aria-hidden="true" />
-        <div className="container heroGrid">
-          <div className="heroCopy heroEntrance">
-            <div className="heroEyebrow"><span>25+</span><p>Years of Mathematics teaching</p></div>
-            <h1>From first doubt<br />to <em>full confidence.</em></h1>
-            <p className="heroLead">Premium academic guidance in Jalandhar, built on patient explanation, disciplined practice and an experience students can trust.</p>
-            <div className="heroPills">
-              <span>Maths · Classes 6–10</span>
-              <span>Science · Classes 9–10</span>
-              <span>All Subjects · Class 8</span>
-            </div>
-            <div className="heroActions">
-              <a className="button buttonGold" href="#contact">Find the right programme</a>
-              <a className="button buttonQuiet" href="#journey">Explore the learning journey ↓</a>
-            </div>
-          </div>
-
-          <div className="heroVisual mediaEntrance">
-            <div className="heroImageFrame">
-              <Image src="/academy/student-study-premium.png" fill sizes="(max-width: 980px) 92vw, 48vw" alt="A focused student studying Mathematics independently" priority />
-              <div className="imageShade" />
-              <div className="imageCaption"><small>THE BRILLIANT MINDSET</small><strong>Understand. Practise. Achieve.</strong></div>
-            </div>
-            <div className="heroResultCard"><span>FEATURED RESULT</span><strong>99/100</strong><p>Mathematics achievement</p></div>
-          </div>
-        </div>
-        <div className="container heroFoot">
-          <span>25+ years of experience</span><span>Offline academic tuition</span><span>Personal Maths guidance</span><span>Focused batch learning</span>
-        </div>
-      </section>
+      <HeroExperience />
 
       <section className="section experienceSection" id="experience">
         <div className="container experienceGrid">
-          <div className="experienceNumber" data-reveal="left"><span>25</span><small>YEARS<br />AND COUNTING</small></div>
+          <div className="experienceNumber" data-reveal="left"><span>25<sup>+</sup></span><small>YEARS<br />AND COUNTING</small></div>
           <div className="experienceStory" data-reveal="right">
             <span className="sectionLabel">EXPERIENCE THAT SHOWS IN THE EXPLANATION</span>
             <h2>Some things are learned from books.<br /><em>Teaching students</em> is learned over time.</h2>
-            <p>For more than 25 years, Brilliant Minds has helped school students understand Mathematics with greater clarity and less fear. That experience shapes how doubts are noticed, concepts are explained and progress is built.</p>
             <div className="experienceProof">
               <div><strong>Clear first</strong><span>Every method begins with understanding.</span></div>
               <div><strong>Practice next</strong><span>Questions are chosen with purpose.</span></div>
               <div><strong>Confidence follows</strong><span>Students learn to work independently.</span></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section resultsSection" id="results">
+        <div className="container">
+          <div className="sectionHead resultsHead" data-reveal>
+            <div><span className="sectionLabel">ACHIEVEMENT PORTRAITS AND RESULTS ARCHIVE</span><h2>Effort, made visible.</h2></div>
+            <p>Individual students. Verified scores. A clearer, more personal record of the work behind the result.</p>
+          </div>
+          <ResultsShowcase />
         </div>
       </section>
 
@@ -244,8 +212,79 @@ export default function Home() {
                 )}
               </article>
             ))}
+
           </div>
         </div>
+
+        <aside className="container journeyDifference journeyDifferenceWide" data-reveal>
+              <div className="journeyDifferenceIntro">
+                <span className="sectionLabel lightLabel">THE BRILLIANT DIFFERENCE</span>
+                <h3>More than a class. <em>A system that keeps students moving.</em></h3>
+                <p>Focused batches, timely doubt support and a routine that turns effort into visible progress.</p>
+              </div>
+              <div className="journeyDifferenceGrid">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Small batches, personal attention. Hover or focus to reveal the classroom image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>01</span><DifferenceIcon type="attention" /><strong>Small batches, personal attention</strong><p>Each learner is noticed, guided and supported at the right pace.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
+                      <Image src="/academy/difference/small-batches-personal-attention-blurred-v2.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Weekly tests and performance reports. Hover or focus to reveal the assessment image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>02</span><DifferenceIcon type="reports" /><strong>Weekly tests &amp; performance reports</strong><p>Regular checks make progress clear for students and parents.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
+                      <Image src="/academy/difference/weekly-tests-performance-reports.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Dedicated doubt-clearing sessions. Hover or focus to reveal the guidance image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>03</span><DifferenceIcon type="doubts" /><strong>Dedicated doubt-clearing sessions</strong><p>Questions are addressed before they become learning gaps.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack differenceFlipBackDoubts" aria-hidden="true">
+                      <Image src="/academy/difference/dedicated-doubt-clearing.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Concept-based learning. Hover or focus to reveal the hands-on geometry image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>04</span><DifferenceIcon type="concepts" /><strong>Concept-based learning</strong><p>Students understand the method instead of only memorising answers.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
+                      <Image src="/academy/difference/concept-based-learning.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Experienced, dedicated teachers. Hover or focus to reveal the classroom teaching image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>05</span><DifferenceIcon type="teachers" /><strong>Experienced, dedicated teachers</strong><p>Patient teaching builds clarity, discipline and confidence.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
+                      <Image src="/academy/difference/experienced-dedicated-teachers.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Qualified subject faculty. Hover or focus to reveal the subject specialist image.">
+                  <div className="differenceFlipInner">
+                    <div className="differenceFlipFace differenceFlipFront">
+                      <span>06</span><DifferenceIcon type="faculty" /><strong>Qualified subject faculty</strong><p>Reliable academic support across the subjects that matter most.</p>
+                    </div>
+                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
+                      <Image src="/academy/difference/qualified-subject-faculty.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
+                    </div>
+                  </div>
+                </article>
+              </div>
+        </aside>
       </section>
 
       <section className="section tuitionSection" id="tuition">
@@ -288,23 +327,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section resultsSection" id="results">
-        <div className="container">
-          <div className="sectionHead resultsHead" data-reveal>
-            <div><span className="sectionLabel">ACHIEVEMENT WALL · SESSION 2024–25</span><h2>Effort, made visible.</h2></div>
-            <p>Real students and real scores—shared by the academy as a record of consistent work, guidance and preparation.</p>
-          </div>
-          <div className="resultStage" data-reveal>
-            <a className="latestBoard" href="/academy/achievers-2024.png" target="_blank" rel="noreferrer" aria-label="Open the 2024–25 achievement wall image full size"><Image src="/academy/achievers-2024.png" fill sizes="(max-width: 900px) 100vw, 67vw" alt="Brilliant Minds Academy achievement wall for the 2024–25 session" /></a>
-            <div className="resultList">
-              <span className="resultListLabel">FEATURED MATHEMATICS SCORES</span>
-              {results.map((result, index) => <article key={result.name}><small>0{index + 1}</small><strong>{result.score}</strong><p>{result.name}</p></article>)}
-              <div className="resultPromise"><span>THE REAL WIN</span><p>Clearer thinking, stronger habits and the confidence to solve independently.</p></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="section principleSection">
         <div className="container principleGrid">
           <span className="principleQuote" data-reveal="left">“</span>
@@ -335,7 +357,7 @@ export default function Home() {
             <div className="contactCards">
               <a href="tel:+917973405625"><span>CALL</span><strong>79734 05625</strong></a>
               <a href="https://wa.me/918847588165" target="_blank" rel="noreferrer"><span>WHATSAPP</span><strong>88475 88165</strong></a>
-              <a href="https://www.google.com/maps/search/?api=1&query=Tagore+Nagar+near+Regent+Park+Hotel+Jalandhar" target="_blank" rel="noreferrer"><span>NEARBY LOCATION</span><strong>Open in Maps ↗</strong></a>
+              <a href="https://www.google.com/maps/place/Brilliant+Minds+Academy/@31.3207411,75.5604499,17z/data=!3m1!4b1!4m6!3m5!1s0x391a5b1c886dcf65:0x219d22479a563b7e!8m2!3d31.3207411!4d75.5630248!16s%2Fg%2F11q385xx2_?entry=ttu" target="_blank" rel="noreferrer"><span>NEARBY LOCATION</span><strong>Open in Maps ↗</strong></a>
             </div>
             <address>Tagore Nagar, Jalandhar<br /><b>Near Regent Park Hotel</b></address>
           </div>

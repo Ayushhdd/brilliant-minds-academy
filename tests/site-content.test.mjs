@@ -37,8 +37,31 @@ test("ships production metadata and required visual assets", async () => {
   await Promise.all([
     access(new URL("public/og.png", root)),
     access(new URL("public/academy/student-study-premium.png", root)),
-    access(new URL("public/academy/achievers-2024.png", root)),
+    access(new URL("public/academy/results-2025/source-board.jpg", root)),
+    access(new URL("public/academy/results-2025/ravneet.jpg", root)),
+    access(new URL("public/academy/results-2025/student-voice-01.mp4", root)),
+    access(new URL("public/academy/results-2025/student-voice-02.mp4", root)),
+    access(new URL("public/academy/results-2025/student-voice-03.mp4", root)),
+    access(new URL("public/academy/results-2025/student-voice-03-poster.png", root)),
+    access(new URL("public/academy/results-archive/session-2023-24-original.jpeg", root)),
+    access(new URL("public/academy/results-archive/session-2023-24-refined.png", root)),
+    access(new URL("public/academy/results-archive/session-2024-25-original.jpeg", root)),
+    access(new URL("public/academy/results-archive/cbse-champions-2023-original.jpeg", root)),
+    access(new URL("public/academy/results-archive/cbse-x-2021-original.jpeg", root)),
   ]);
+});
+
+test("provides a source-linked results archive and three student videos", async () => {
+  const results = await source("app/ResultsShowcase.tsx");
+
+  assert.match(results, /id: "2025-26"/);
+  assert.match(results, /id: "2024-25"/);
+  assert.match(results, /id: "2023-24"/);
+  assert.match(results, /id: "2023"/);
+  assert.match(results, /id: "2021"/);
+  assert.match(results, /View original result sheet/);
+  assert.match(results, /student-voice-03\.mp4/);
+  assert.match(results, /role="tablist"/);
 });
 
 test("does not contain starter or broken-encoding copy", async () => {
