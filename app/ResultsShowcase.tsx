@@ -102,11 +102,11 @@ const resultSessions: ResultSession[] = [
     eyebrow: "ARCHIVED ACHIEVEMENT SHEET",
     title: "CBSE Champions - Class X Mathematics - 2023",
     topScore: 97,
-    source: "/academy/results-archive/cbse-champions-2023-original.jpeg",
+    source: "/academy/results-archive/cbse-champions-2023-cropped.jpeg",
     sourceTitle: "Academy record - CBSE Champions 2023",
     sourceCopy: "Highlights are transcribed from the supplied sheet. Open the original for the complete record.",
     kind: "archive",
-    sheet: "/academy/results-archive/cbse-champions-2023-original.jpeg",
+    sheet: "/academy/results-archive/cbse-champions-2023-cropped.jpeg",
     sheetClass: "archiveSheetImage--portrait",
     highlights: [
       { name: "Yashleen", score: 97 }, { name: "Arshita Aggarwal", score: 95 }, { name: "Jai Aggarwal", score: 93 },
@@ -120,7 +120,7 @@ const resultSessions: ResultSession[] = [
     eyebrow: "ARCHIVED ACHIEVEMENT SHEET",
     title: "CBSE Class X top results - 2021",
     topScore: 96,
-    source: "/academy/results-archive/cbse-x-2021-original.jpeg",
+    source: "/academy/achievers-blue.png",
     sourceTitle: "Academy record - CBSE Class X 2021",
     sourceCopy: "Highlights are transcribed from the supplied sheet. Open the original for the complete record.",
     kind: "archive",
@@ -156,6 +156,14 @@ const studentStories = [
     copy: "A new student reflection shared directly from the Brilliant Minds learning experience.",
     video: "/academy/results-2025/student-voice-03.mp4",
     poster: "/academy/results-2025/student-voice-03-poster.png",
+  },
+  {
+    number: "04",
+    duration: "36 sec",
+    title: "A learner's reflection, shared directly.",
+    copy: "A personal video shared by a Brilliant Minds learner.",
+    video: "/academy/results-2025/student-voice-04.mp4",
+    poster: "/academy/results-2025/student-voice-04-poster.jpg",
   },
 ];
 
@@ -207,7 +215,7 @@ function StudentStoryCard({ story }: { story: StudentStory }) {
         <video
           ref={videoRef}
           poster={story.poster}
-          preload="auto"
+          preload="metadata"
           playsInline
           muted={!soundMode}
           loop
@@ -229,7 +237,7 @@ function StudentStoryCard({ story }: { story: StudentStory }) {
           <span aria-hidden="true">{soundMode && isPlaying ? "||" : ">"}</span>
           {soundMode && isPlaying ? "Pause story" : isPlaying ? "Play with sound" : "Preview story"}
         </button>
-        <small>Hover for a silent preview - tap for sound</small>
+        <small><span className="desktopStoryHint">Hover for a silent preview - tap for sound</span><span className="mobileStoryHint">Tap preview for sound</span></small>
       </div>
     </article>
   );
@@ -356,6 +364,7 @@ export default function ResultsShowcase() {
         <p>Real student reflections add the context a number alone cannot - shared as received, with no staged visuals.</p>
       </div>
 
+      <p className="mobileRailHint storiesRailHint" aria-hidden="true">Swipe to watch each story <span>&rarr;</span></p>
       <div className="studentVoicesGrid" data-reveal>
         {studentStories.map((story) => <StudentStoryCard story={story} key={story.number} />)}
       </div>

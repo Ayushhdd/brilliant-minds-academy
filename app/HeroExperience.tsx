@@ -4,6 +4,18 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
+type PerformanceNavigator = Navigator & { deviceMemory?: number };
+
+function shouldUseLightweightExperience() {
+  const navigatorWithMemory = navigator as PerformanceNavigator;
+
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    (navigatorWithMemory.deviceMemory ?? 8) <= 4 ||
+    (navigator.hardwareConcurrency ?? 8) <= 4
+  );
+}
+
 const heroAchievers = [
   { name: "Ravneet", score: 98, image: "/academy/results-2025/ravneet-enhanced.png" },
   { name: "Jishnu", score: 97, image: "/academy/results-2025/jishnu-enhanced.png" },
@@ -20,6 +32,11 @@ export default function HeroExperience() {
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
+    if (shouldUseLightweightExperience()) {
+      heroRef.current?.style.setProperty("--hero-scroll", "0");
+      return;
+    }
+
     const updateHero = () => {
       frameRef.current = null;
       const hero = heroRef.current;
@@ -48,6 +65,12 @@ export default function HeroExperience() {
   }, []);
 
   useEffect(() => {
+    if (shouldUseLightweightExperience()) {
+      stageRef.current = 0;
+      setStage(0);
+      return;
+    }
+
     const desktopQuery = window.matchMedia("(min-width: 761px)");
 
     const resetForMobile = () => {

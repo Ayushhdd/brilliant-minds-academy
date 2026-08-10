@@ -20,6 +20,7 @@ test("contains the academy's core programmes and conversion paths", async () => 
   assert.match(page, /Vedic Mathematics/);
   assert.match(page, /href="tel:\+917973405625"/);
   assert.match(page, /https:\/\/wa\.me\/918847588165/);
+  assert.match(page, /youtube\.com\/channel\/UCk-e_BkjUWD6AG2nkwNqaSA/);
   assert.match(page, /id="main-content"/);
   assert.match(page, /"@type": "FAQPage"/);
   assert.match(form, /Send enquiry on WhatsApp/);
@@ -43,6 +44,8 @@ test("ships production metadata and required visual assets", async () => {
     access(new URL("public/academy/results-2025/student-voice-02.mp4", root)),
     access(new URL("public/academy/results-2025/student-voice-03.mp4", root)),
     access(new URL("public/academy/results-2025/student-voice-03-poster.png", root)),
+    access(new URL("public/academy/results-2025/student-voice-04.mp4", root)),
+    access(new URL("public/academy/results-2025/student-voice-04-poster.jpg", root)),
     access(new URL("public/academy/results-archive/session-2023-24-original.jpeg", root)),
     access(new URL("public/academy/results-archive/session-2023-24-refined.png", root)),
     access(new URL("public/academy/results-archive/session-2024-25-original.jpeg", root)),
@@ -51,7 +54,7 @@ test("ships production metadata and required visual assets", async () => {
   ]);
 });
 
-test("provides a source-linked results archive and three student videos", async () => {
+test("provides a source-linked results archive and four student videos", async () => {
   const results = await source("app/ResultsShowcase.tsx");
 
   assert.match(results, /id: "2025-26"/);
@@ -61,6 +64,7 @@ test("provides a source-linked results archive and three student videos", async 
   assert.match(results, /id: "2021"/);
   assert.match(results, /View original result sheet/);
   assert.match(results, /student-voice-03\.mp4/);
+  assert.match(results, /student-voice-04\.mp4/);
   assert.match(results, /role="tablist"/);
 });
 

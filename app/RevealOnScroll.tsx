@@ -2,11 +2,23 @@
 
 import { useEffect } from "react";
 
+type PerformanceNavigator = Navigator & { deviceMemory?: number };
+
+function shouldUseLightweightExperience() {
+  const navigatorWithMemory = navigator as PerformanceNavigator;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const limitedMemory = (navigatorWithMemory.deviceMemory ?? 8) <= 4;
+  const limitedCpu = (navigator.hardwareConcurrency ?? 8) <= 4;
+
+  return reducedMotion || limitedMemory || limitedCpu;
+}
+
 export default function RevealOnScroll() {
   useEffect(() => {
     const root = document.documentElement;
     const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const lightweightExperience = shouldUseLightweightExperience();
     let frame = 0;
 
     const updateProgress = () => {
@@ -20,17 +32,18 @@ export default function RevealOnScroll() {
       if (!frame) frame = window.requestAnimationFrame(updateProgress);
     };
 
+    root.classList.toggle("performance-lite", lightweightExperience);
+
+    if (lightweightExperience || reduceMotion || !("IntersectionObserver" in window)) {
+      root.classList.remove("motion-ready");
+      root.style.setProperty("--page-progress", "0");
+      items.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
     root.classList.add("motion-ready");
     updateProgress();
     window.addEventListener("scroll", onScroll, { passive: true });
-
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      items.forEach((item) => item.classList.add("is-visible"));
-      return () => {
-        window.removeEventListener("scroll", onScroll);
-        if (frame) window.cancelAnimationFrame(frame);
-      };
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {

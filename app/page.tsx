@@ -194,6 +194,7 @@ export default function Home() {
             <span className="sectionLabel lightLabel">THE BRILLIANT JOURNEY</span>
             <h2>Knowledge is not a jump.<br />It is a journey.</h2>
             <p>Scroll through the learning rhythm that moves a student from uncertainty to ownership.</p>
+            <p className="mobileRailHint journeyRailHint" aria-hidden="true">Swipe through the steps <span>&rarr;</span></p>
             <div className="journeyOrb" aria-hidden="true"><span>0</span><i>→</i><b>∞</b></div>
           </div>
           <div className="journeySteps">
@@ -206,7 +207,7 @@ export default function Home() {
                 </div>
                 {item.image && (
                   <div className="journeyPhoto">
-                    <Image src={item.image} fill sizes="(max-width: 760px) 100vw, 24vw" alt={`${item.title} — a student progressing through the learning journey`} />
+                    <Image src={item.image} fill sizes="(max-width: 760px) 100vw, 24vw" quality={90} alt={`${item.title} — a student progressing through the learning journey`} />
                     <span aria-hidden="true">{item.step}</span>
                   </div>
                 )}
@@ -221,9 +222,10 @@ export default function Home() {
                 <span className="sectionLabel lightLabel">THE BRILLIANT DIFFERENCE</span>
                 <h3>More than a class. <em>A system that keeps students moving.</em></h3>
                 <p>Focused batches, timely doubt support and a routine that turns effort into visible progress.</p>
+                <p className="differenceInteractionHint"><span className="desktopFlipHint">Hover a card to reveal the classroom image.</span><span className="mobileFlipHint">Swipe to browse &middot; Tap a card to flip.</span></p>
               </div>
               <div className="journeyDifferenceGrid">
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Small batches, personal attention. Hover or focus to reveal the classroom image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Small batches, personal attention. Hover on desktop or tap on a touch device to reveal the classroom image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>01</span><DifferenceIcon type="attention" /><strong>Small batches, personal attention</strong><p>Each learner is noticed, guided and supported at the right pace.</p>
@@ -233,7 +235,7 @@ export default function Home() {
                     </div>
                   </div>
                 </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Weekly tests and performance reports. Hover or focus to reveal the assessment image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Weekly tests and performance reports. Hover on desktop or tap on a touch device to reveal the assessment image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>02</span><DifferenceIcon type="reports" /><strong>Weekly tests &amp; performance reports</strong><p>Regular checks make progress clear for students and parents.</p>
@@ -243,7 +245,7 @@ export default function Home() {
                     </div>
                   </div>
                 </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Dedicated doubt-clearing sessions. Hover or focus to reveal the guidance image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Dedicated doubt-clearing sessions. Hover on desktop or tap on a touch device to reveal the guidance image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>03</span><DifferenceIcon type="doubts" /><strong>Dedicated doubt-clearing sessions</strong><p>Questions are addressed before they become learning gaps.</p>
@@ -253,7 +255,7 @@ export default function Home() {
                     </div>
                   </div>
                 </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Concept-based learning. Hover or focus to reveal the hands-on geometry image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Concept-based learning. Hover on desktop or tap on a touch device to reveal the hands-on geometry image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>04</span><DifferenceIcon type="concepts" /><strong>Concept-based learning</strong><p>Students understand the method instead of only memorising answers.</p>
@@ -263,7 +265,7 @@ export default function Home() {
                     </div>
                   </div>
                 </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Experienced, dedicated teachers. Hover or focus to reveal the classroom teaching image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Experienced, dedicated teachers. Hover on desktop or tap on a touch device to reveal the classroom teaching image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>05</span><DifferenceIcon type="teachers" /><strong>Experienced, dedicated teachers</strong><p>Patient teaching builds clarity, discipline and confidence.</p>
@@ -273,7 +275,7 @@ export default function Home() {
                     </div>
                   </div>
                 </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Qualified subject faculty. Hover or focus to reveal the subject specialist image.">
+                <article className="differenceFlipCard" tabIndex={0} aria-label="Qualified subject faculty. Hover on desktop or tap on a touch device to reveal the subject specialist image.">
                   <div className="differenceFlipInner">
                     <div className="differenceFlipFace differenceFlipFront">
                       <span>06</span><DifferenceIcon type="faculty" /><strong>Qualified subject faculty</strong><p>Reliable academic support across the subjects that matter most.</p>
@@ -293,6 +295,7 @@ export default function Home() {
             <div><span className="sectionLabel">OFFLINE ACADEMIC TUITION</span><h2>Serious learning.<br />Inside a focused classroom.</h2></div>
             <p>Academic tuition is conducted offline at the academy, giving students direct guidance, consistent routines and timely doubt support.</p>
           </div>
+          <p className="mobileRailHint tuitionRailHint" aria-hidden="true">Swipe to compare programmes <span>&rarr;</span></p>
           <div className="tuitionGrid staggerGrid" data-reveal>
             {tuitionProgrammes.map((programme) => (
               <article className={`tuitionCard ${programme.tone}`} key={programme.subject}>
@@ -355,9 +358,18 @@ export default function Home() {
             <h2>Every strong result begins with the right conversation.</h2>
             <p>Share the student’s class, subject and current concern. The academy will guide you towards the most suitable programme and batch.</p>
             <div className="contactCards">
-              <a href="tel:+917973405625"><span>CALL</span><strong>79734 05625</strong></a>
-              <a href="https://wa.me/918847588165" target="_blank" rel="noreferrer"><span>WHATSAPP</span><strong>88475 88165</strong></a>
-              <a href="https://www.google.com/maps/place/Brilliant+Minds+Academy/@31.3207411,75.5604499,17z/data=!3m1!4b1!4m6!3m5!1s0x391a5b1c886dcf65:0x219d22479a563b7e!8m2!3d31.3207411!4d75.5630248!16s%2Fg%2F11q385xx2_?entry=ttu" target="_blank" rel="noreferrer"><span>NEARBY LOCATION</span><strong>Open in Maps ↗</strong></a>
+              <a className="contactCard--call" href="tel:+917973405625" aria-label="Call Brilliant Minds Academy">
+                <svg className="contactCardIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.8 4.9 5.1c-.8.5-1.1 1.5-.8 2.4 1.8 5.3 6 9.5 11.3 11.3.9.3 1.9 0 2.4-.8l1.3-2.2c.4-.7.3-1.6-.4-2.1l-2.4-1.8c-.6-.5-1.5-.4-2.1.1l-1.2 1.2a13.7 13.7 0 0 1-2.2-1.7 13.7 13.7 0 0 1-1.7-2.2l1.2-1.2c.5-.6.6-1.5.1-2.1L9.2 4.2c-.5-.7-1.4-.8-2.1-.4Z" /></svg>
+                <span>CALL THE ACADEMY</span><strong>79734 05625</strong>
+              </a>
+              <a className="contactCard--whatsapp" href="https://wa.me/918847588165" target="_blank" rel="noreferrer" aria-label="Message Brilliant Minds Academy on WhatsApp">
+                <svg className="contactCardIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.4a8 8 0 0 1-11.8 7L4 20l1.6-4.1A8 8 0 1 1 20 11.4Z" /><path d="M9.2 7.6 8 8.3c-.4.2-.5.7-.3 1.1.8 2.2 2.5 3.9 4.7 4.7.4.2.9 0 1.1-.3l.7-1.2-1.7-1.1-.8.8a6.2 6.2 0 0 1-2-2l.8-.8-1.3-1.9Z" /></svg>
+                <span>WHATSAPP</span><strong>88475 88165</strong>
+              </a>
+              <a className="contactCard--youtube" href="https://www.youtube.com/channel/UCk-e_BkjUWD6AG2nkwNqaSA" target="_blank" rel="noreferrer" aria-label="Visit Brilliant Minds Academy on YouTube">
+                <svg className="contactCardIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3" /><path d="m10 9 5 3-5 3V9Z" /></svg>
+                <span>YOUTUBE CHANNEL</span><strong>Watch free lessons ↗</strong>
+              </a>
             </div>
             <address>Tagore Nagar, Jalandhar<br /><b>Near Regent Park Hotel</b></address>
           </div>
