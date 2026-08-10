@@ -139,8 +139,8 @@ main:focus { outline: none; }
 .dynamicHeroActions { position: absolute; left: 0; bottom: 18px; z-index: 5; display: flex; align-items: center; gap: 20px; transition: opacity .3s ease, transform .34s ease; }
 .dynamicHeroVisual { position: relative; min-height: 590px; perspective: 1200px; }
 .dynamicStudyFrame { position: absolute; inset: 32px 0 58px; overflow: hidden; border: 5px solid rgba(255,255,255,.92); border-radius: 22px; background: #081a2e; box-shadow: 0 32px 80px rgba(0,0,0,.28); transition: opacity .42s ease, transform .52s cubic-bezier(.2,.75,.2,1); will-change: opacity, transform; }
-.dynamicStudyFrame img { object-fit: cover; filter: brightness(1.17) saturate(1.06) contrast(.98); animation: cinematicDrift 14s ease-in-out infinite; will-change: transform; }
-.dynamicImageShade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,13,27,.62), rgba(4,13,27,.12) 49%, transparent 72%); }
+.dynamicStudyFrame img { object-fit: cover; filter: brightness(1.3) saturate(1.08) contrast(1); animation: cinematicDrift 14s ease-in-out infinite; will-change: transform; }
+.dynamicImageShade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,13,27,.46), rgba(4,13,27,.07) 49%, transparent 72%); }
 .dynamicImageCaption { position: absolute; left: 42px; bottom: 35px; }
 .dynamicImageCaption small { display: block; margin-bottom: 9px; color: var(--gold-light); font-size: 8px; font-weight: 900; letter-spacing: .16em; }
 .dynamicImageCaption strong { font-family: Georgia, "Times New Roman", serif; font-size: 26px; }
