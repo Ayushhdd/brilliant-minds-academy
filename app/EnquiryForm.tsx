@@ -1,14 +1,35 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+
+const programmeOptions = [
+  { value: "maths", label: "Mathematics · Classes 6–10 (Offline)" },
+  { value: "science", label: "Science · Classes 9–10 (Offline)" },
+  { value: "class-8", label: "All subjects · Class 8 (Offline)" },
+  { value: "vedic", label: "Vedic Maths crash course" },
+];
+
+const learningModes = {
+  academy: ["Academy tuition · Offline"],
+  vedic: ["Vedic Maths · Offline", "Vedic Maths · Online"],
+};
 
 export default function EnquiryForm() {
+  const [selectedProgramme, setSelectedProgramme] = useState("");
+  const [selectedMode, setSelectedMode] = useState("");
+  const availableModes = selectedProgramme === "vedic"
+    ? learningModes.vedic
+    : selectedProgramme
+      ? learningModes.academy
+      : [];
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const name = data.get("name")?.toString().trim() || "Parent";
     const phone = data.get("phone")?.toString().trim() || "Not provided";
-    const programme = data.get("programme")?.toString() || "Not selected";
+    const programmeValue = data.get("programme")?.toString() || "";
+    const programme = programmeOptions.find((option) => option.value === programmeValue)?.label || "Not selected";
     const mode = data.get("mode")?.toString() || "Not selected";
     const message = `Hello Brilliant Minds Academy, I am ${name}. Contact number: ${phone}. I would like to enquire about ${programme}. Preferred mode: ${mode}. Please share batch details.`;
     const whatsappUrl = `https://wa.me/918847588165?text=${encodeURIComponent(message)}`;
@@ -43,22 +64,24 @@ export default function EnquiryForm() {
       <div className="formRow">
         <label>
           Programme
-          <select name="programme" required defaultValue="">
+          <select
+            name="programme"
+            required
+            value={selectedProgramme}
+            onChange={(event) => {
+              setSelectedProgramme(event.target.value);
+              setSelectedMode("");
+            }}
+          >
             <option value="" disabled>Select programme</option>
-            <option>Mathematics · Classes 6–10 (Offline)</option>
-            <option>Science · Classes 9–10 (Offline)</option>
-            <option>All subjects · Class 8 (Offline)</option>
-            <option>Vedic Maths crash course</option>
+            {programmeOptions.map((programme) => <option key={programme.value} value={programme.value}>{programme.label}</option>)}
           </select>
         </label>
         <label>
           Learning mode
-          <select name="mode" required defaultValue="">
-            <option value="" disabled>Select mode</option>
-            <option>Academy tuition · Offline</option>
-            <option>Vedic Maths · Offline</option>
-            <option>Vedic Maths · Online</option>
-            <option>Need guidance</option>
+          <select name="mode" required value={selectedMode} disabled={!selectedProgramme} onChange={(event) => setSelectedMode(event.target.value)}>
+            <option value="" disabled>{selectedProgramme ? "Select mode" : "Select programme first"}</option>
+            {availableModes.map((mode) => <option key={mode}>{mode}</option>)}
           </select>
         </label>
       </div>

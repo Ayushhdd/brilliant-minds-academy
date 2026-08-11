@@ -65,11 +65,11 @@ const faqs = [
   },
   {
     question: "Which students can join Mathematics tuition?",
-    answer: "Focused Mathematics tuition is available for Classes 6–10.",
+    answer: "Mathematics for Classes 6–10 is personally taught by the academy’s lead Mathematics educator.",
   },
   {
     question: "What is available for Class 8?",
-    answer: "Class 8 students can receive all-subject support, with Mathematics personally guided by the academy’s lead Mathematics educator.",
+    answer: "Class 8 students receive all-subject support, with Mathematics personally taught by the academy’s lead Mathematics educator.",
   },
   {
     question: "Is Vedic Maths the same as regular tuition?",
