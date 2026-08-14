@@ -20,7 +20,7 @@ test("contains the academy's core programmes and conversion paths", async () => 
   assert.match(page, /Vedic Mathematics/);
   assert.match(page, /href="tel:\+917973405625"/);
   assert.match(page, /https:\/\/wa\.me\/918847588165/);
-  assert.match(page, /youtube\.com\/channel\/UCk-e_BkjUWD6AG2nkwNqaSA/);
+  assert.match(page, /youtube\.com\/@brilliantmindsmathsacademy/);
   assert.match(page, /id="main-content"/);
   assert.match(page, /"@type": "FAQPage"/);
   assert.match(form, /Send enquiry on WhatsApp/);

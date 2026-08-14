@@ -370,7 +370,7 @@ export default function Home() {
                 <svg className="contactCardIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.4a8 8 0 0 1-11.8 7L4 20l1.6-4.1A8 8 0 1 1 20 11.4Z" /><path d="M9.2 7.6 8 8.3c-.4.2-.5.7-.3 1.1.8 2.2 2.5 3.9 4.7 4.7.4.2.9 0 1.1-.3l.7-1.2-1.7-1.1-.8.8a6.2 6.2 0 0 1-2-2l.8-.8-1.3-1.9Z" /></svg>
                 <span>WHATSAPP</span><strong>88475 88165</strong>
               </a>
-              <a className="contactCard--youtube" href="https://www.youtube.com/channel/UCk-e_BkjUWD6AG2nkwNqaSA" target="_blank" rel="noreferrer" aria-label="Visit Brilliant Minds Academy on YouTube">
+              <a className="contactCard--youtube" href="https://youtube.com/@brilliantmindsmathsacademy" target="_blank" rel="noreferrer" aria-label="Visit Brilliant Minds Academy on YouTube">
                 <svg className="contactCardIcon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3" /><path d="m10 9 5 3-5 3V9Z" /></svg>
                 <span>YOUTUBE CHANNEL</span><strong>Watch free lessons ↗</strong>
               </a>
