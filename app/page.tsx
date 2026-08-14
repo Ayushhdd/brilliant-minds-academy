@@ -51,7 +51,7 @@ const tuitionProgrammes = [
   {
     number: "03",
     subject: "All Subjects",
-    classes: "Class 8",
+    classes: "Classes 6–8",
     note: "Complete subject support, with Mathematics personally guided by the lead educator.",
     points: ["Homework guidance", "Foundation strengthening", "Regular revision"],
     tone: "foundation",
@@ -68,12 +68,16 @@ const faqs = [
     answer: "Mathematics for Classes 6–10 is personally taught by the academy’s lead Mathematics educator.",
   },
   {
-    question: "What is available for Class 8?",
-    answer: "Class 8 students receive all-subject support, with Mathematics personally taught by the academy’s lead Mathematics educator.",
+    question: "Which students can join Science tuition?",
+    answer: "Science tuition is available for Classes 9–10, with focused Physics, Chemistry and Biology support from subject faculty.",
+  },
+  {
+    question: "What is available for Classes 6–8?",
+    answer: "Students in Classes 6–8 can receive all-subject support, with Mathematics personally taught by the academy’s lead Mathematics educator.",
   },
   {
     question: "Is Vedic Maths the same as regular tuition?",
-    answer: "No. It is a separate crash-course experience focused on mental calculation, speed and number sense. Online and offline batches are available.",
+    answer: "No. It is a separate Sunday-only crash course focused on mental calculation, speed and number sense.",
   },
   {
     question: "How can we confirm fees and timings?",
@@ -85,7 +89,7 @@ const academySchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "Brilliant Minds Maths Academy",
-  description: "Offline academic tuition and online or offline Vedic Mathematics crash courses in Jalandhar.",
+  description: "Offline academic tuition and a Sunday-only Vedic Mathematics crash course in Jalandhar.",
   telephone: ["+91 79734 05625", "+91 88475 88165"],
   address: {
     "@type": "PostalAddress",
@@ -95,7 +99,7 @@ const academySchema = {
     addressCountry: "IN",
   },
   areaServed: "Jalandhar",
-  knowsAbout: ["Mathematics", "Science", "Class 8 tuition", "Vedic Mathematics"],
+  knowsAbout: ["Mathematics", "Science", "Classes 6–8 tuition", "Vedic Mathematics"],
 };
 
 const faqSchema = {
@@ -322,8 +326,8 @@ export default function Home() {
           <div className="vedicCopy" data-reveal="right">
             <span className="vedicLabel">A DIFFERENT KIND OF LEARNING</span>
             <h2>Not regular tuition.<br /><em>A calculation advantage.</em></h2>
-            <p>Vedic Mathematics is presented as a focused crash course—designed to strengthen number sense, mental calculation and speed through practical techniques students can carry forward.</p>
-            <div className="vedicModes"><span>ONLINE</span><i>+</i><span>OFFLINE</span><b>CRASH COURSE</b></div>
+            <p>Vedic Mathematics is a focused Sunday-only crash course—designed to strengthen number sense, mental calculation and speed through practical techniques students can carry forward.</p>
+            <div className="vedicModes"><span>SUNDAY ONLY</span><b>CRASH COURSE</b></div>
             <div className="vedicBenefits"><span>Faster calculations</span><span>Sharper number sense</span><span>Greater confidence</span></div>
             <a href="/vedic-maths">Explore the full Vedic Maths experience →</a>
           </div>
@@ -380,7 +384,7 @@ export default function Home() {
       <footer>
         <div className="container footerTop">
           <a href="#home" aria-label="Back to top"><BrandLockup footer /></a>
-          <p>25+ years of Mathematics teaching, offline academic tuition and a separate Vedic Mathematics crash-course experience.</p>
+          <p>25+ years of Mathematics teaching, offline academic tuition and a Sunday-only Vedic Mathematics crash course.</p>
           <div><a href="#journey">Journey</a><a href="#tuition">Tuition</a><a href="/vedic-maths">Vedic Maths</a><a href="#results">Results</a><a href="#contact">Contact</a></div>
         </div>
         <div className="container footerBottom"><span>© {new Date().getFullYear()} Brilliant Minds Maths Academy</span><span>Tagore Nagar, Jalandhar · Near Regent Park Hotel</span></div>

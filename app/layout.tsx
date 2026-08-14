@@ -12,20 +12,20 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase,
     title: "Brilliant Minds Academy | 25+ Years of Maths Tuition in Jalandhar",
     description:
-      "Brilliant Minds Academy offers offline academic tuition in Jalandhar with 25+ years of Mathematics teaching experience, plus online and offline Vedic Maths crash courses.",
+      "Brilliant Minds Academy offers offline academic tuition in Jalandhar with 25+ years of Mathematics teaching experience, plus a Sunday-only Vedic Maths crash course.",
     keywords: [
       "Maths tuition Jalandhar",
       "CBSE maths coaching",
       "Class 10 maths tuition",
       "Science tuition Jalandhar",
-      "All subjects tuition Class 8",
+      "All subjects tuition Classes 6–8",
       "Vedic maths Jalandhar",
       "Brilliant Minds Maths Academy",
     ],
     alternates: { canonical: "/" },
     openGraph: {
       title: "Brilliant Minds Academy | From First Doubt to Full Confidence",
-      description: "25+ years of Mathematics teaching · Offline academic tuition · Online and offline Vedic Maths crash courses",
+      description: "25+ years of Mathematics teaching · Offline academic tuition · Sunday-only Vedic Maths crash course",
       url: "/",
       siteName: "Brilliant Minds Maths Academy",
       locale: "en_IN",
@@ -35,7 +35,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "Brilliant Minds Academy | Jalandhar",
-      description: "25+ years of Mathematics teaching, offline academic tuition and Vedic Maths crash courses in Jalandhar.",
+      description: "25+ years of Mathematics teaching, offline academic tuition and a Sunday-only Vedic Maths crash course in Jalandhar.",
       images: ["/og.png"],
     },
   };

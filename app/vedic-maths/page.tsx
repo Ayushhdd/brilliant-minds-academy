@@ -5,7 +5,7 @@ import styles from "./vedic.module.css";
 
 export const metadata: Metadata = {
   title: "Vedic Maths Crash Course | Brilliant Minds Academy",
-  description: "A focused online and offline Vedic Mathematics crash course for faster calculation, sharper number sense and confident mental maths.",
+  description: "A focused Sunday-only Vedic Mathematics crash course for faster calculation, sharper number sense and confident mental maths.",
   alternates: { canonical: "/vedic-maths" },
 };
 
@@ -23,7 +23,7 @@ export default function VedicMathsPage() {
           <span className={styles.crest}>BM</span>
           <span><strong>Brilliant Minds</strong><small>VEDIC MATHEMATICS</small></span>
         </Link>
-        <nav aria-label="Vedic Maths navigation"><a href="#challenge">Challenge</a><a href="#method">The method</a><a href="#batches">Batches</a></nav>
+        <nav aria-label="Vedic Maths navigation"><a href="#challenge">Challenge</a><a href="#method">The method</a><a href="#batches">Sunday batch</a></nav>
         <Link className={styles.headerCta} href="/#contact">Ask about a batch</Link>
       </header>
 
@@ -33,7 +33,7 @@ export default function VedicMathsPage() {
           <span className={styles.eyebrow}>A SEPARATE CALCULATION EXPERIENCE</span>
           <h1>What if difficult sums started to feel <em>obvious?</em></h1>
           <p>Vedic Mathematics trains students to recognise number patterns, calculate mentally and reach answers with fewer, clearer steps.</p>
-          <div className={styles.heroActions}><a className={styles.goldButton} href="#challenge">Take the 10-second test</a><a className={styles.textLink} href="#batches">Online + offline batches ↓</a></div>
+          <div className={styles.heroActions}><a className={styles.goldButton} href="#challenge">Take the 10-second test</a><a className={styles.textLink} href="#batches">Sunday crash course ↓</a></div>
         </div>
 
         <div className={styles.orbitScene} aria-hidden="true">
@@ -79,15 +79,14 @@ export default function VedicMathsPage() {
       </section>
 
       <section className={styles.batchSection} id="batches">
-        <div className={styles.sectionHeading}><span className={styles.eyebrow}>CHOOSE THE LEARNING MODE</span><h2>One crash course. Two ways to join.</h2></div>
+        <div className={styles.sectionHeading}><span className={styles.eyebrow}>A FOCUSED WEEKLY FORMAT</span><h2>One Sunday. One focused crash course.</h2></div>
         <div className={styles.batchGrid}>
-          <article><span>AT THE ACADEMY</span><h3>Offline</h3><p>Face-to-face demonstrations, timed drills and immediate correction in a focused classroom setting.</p><ul><li>Guided practice</li><li>Live doubt support</li><li>Structured pace</li></ul></article>
-          <article><span>JOIN FROM ANYWHERE</span><h3>Online</h3><p>Interactive live sessions that bring the same visual methods and guided calculation practice to the student.</p><ul><li>Live instruction</li><li>Digital practice</li><li>Flexible access</li></ul></article>
+          <article><span>EVERY SUNDAY</span><h3>Vedic Maths crash course</h3><p>A dedicated weekly session for learning practical shortcuts, strengthening number sense and practising faster mental calculation.</p><ul><li>New methods each week</li><li>Timed calculation practice</li><li>Doubt support</li></ul></article>
         </div>
-        <div className={styles.finalCta}><span>READY TO CALCULATE DIFFERENTLY?</span><h2>Ask about the next Vedic Maths batch.</h2><p>Share the student’s class and preferred mode. We’ll help you choose the right batch.</p><Link href="/#contact">Continue to WhatsApp enquiry <b>→</b></Link></div>
+        <div className={styles.finalCta}><span>READY TO CALCULATE DIFFERENTLY?</span><h2>Ask about the next Sunday batch.</h2><p>Share the student’s class and we’ll help you join the right Vedic Maths batch.</p><Link href="/#contact">Continue to WhatsApp enquiry <b>→</b></Link></div>
       </section>
 
-      <footer className={styles.footer}><Link href="/">← Back to Brilliant Minds Academy</Link><span>Online + offline Vedic Maths crash course</span><span>25+ years of Mathematics teaching</span></footer>
+      <footer className={styles.footer}><Link href="/">← Back to Brilliant Minds Academy</Link><span>Sunday-only Vedic Maths crash course</span><span>25+ years of Mathematics teaching</span></footer>
     </main>
   );
 }

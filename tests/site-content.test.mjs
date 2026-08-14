@@ -76,7 +76,7 @@ test("provides a separate interactive Vedic Maths experience", async () => {
   ]);
 
   assert.match(page, /canonical: "\/vedic-maths"/);
-  assert.match(page, /Online \+ offline batches/);
+  assert.match(page, /Sunday-only Vedic Maths crash course/);
   assert.match(page, /id="main-content"/);
   assert.match(challenge, /THE 10-SECOND TEST/);
   assert.match(challenge, /setTimeLeft/);

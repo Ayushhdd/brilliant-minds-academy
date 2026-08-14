@@ -5,13 +5,13 @@ import { FormEvent, useState } from "react";
 const programmeOptions = [
   { value: "maths", label: "Mathematics · Classes 6–10 (Offline)" },
   { value: "science", label: "Science · Classes 9–10 (Offline)" },
-  { value: "class-8", label: "All subjects · Class 8 (Offline)" },
-  { value: "vedic", label: "Vedic Maths crash course" },
+  { value: "class-8", label: "All subjects · Classes 6–8 (Offline)" },
+  { value: "vedic", label: "Vedic Maths · Sunday-only crash course" },
 ];
 
 const learningModes = {
   academy: ["Academy tuition · Offline"],
-  vedic: ["Vedic Maths · Offline", "Vedic Maths · Online"],
+  vedic: ["Sunday-only crash course"],
 };
 
 export default function EnquiryForm() {
