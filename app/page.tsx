@@ -154,7 +154,7 @@ export default function Home() {
             <a href="#experience">Experience</a>
             <a href="#journey">The journey</a>
             <a href="#tuition">Tuition</a>
-            <a href="#vedic">Vedic Maths</a>
+            <a href="/vedic-maths">Vedic Maths</a>
             <a href="#results">Results</a>
           </nav>
           <a className="navCta" href="#contact">Book counselling</a>
@@ -325,7 +325,7 @@ export default function Home() {
             <p>Vedic Mathematics is presented as a focused crash course—designed to strengthen number sense, mental calculation and speed through practical techniques students can carry forward.</p>
             <div className="vedicModes"><span>ONLINE</span><i>+</i><span>OFFLINE</span><b>CRASH COURSE</b></div>
             <div className="vedicBenefits"><span>Faster calculations</span><span>Sharper number sense</span><span>Greater confidence</span></div>
-            <a href="#contact">Ask about the next Vedic Maths batch →</a>
+            <a href="/vedic-maths">Explore the full Vedic Maths experience →</a>
           </div>
         </div>
       </section>
@@ -381,7 +381,7 @@ export default function Home() {
         <div className="container footerTop">
           <a href="#home" aria-label="Back to top"><BrandLockup footer /></a>
           <p>25+ years of Mathematics teaching, offline academic tuition and a separate Vedic Mathematics crash-course experience.</p>
-          <div><a href="#journey">Journey</a><a href="#tuition">Tuition</a><a href="#vedic">Vedic Maths</a><a href="#results">Results</a><a href="#contact">Contact</a></div>
+          <div><a href="#journey">Journey</a><a href="#tuition">Tuition</a><a href="/vedic-maths">Vedic Maths</a><a href="#results">Results</a><a href="#contact">Contact</a></div>
         </div>
         <div className="container footerBottom"><span>© {new Date().getFullYear()} Brilliant Minds Maths Academy</span><span>Tagore Nagar, Jalandhar · Near Regent Park Hotel</span></div>
       </footer>

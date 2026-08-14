@@ -38,7 +38,7 @@ test("ships production metadata and required visual assets", async () => {
   await Promise.all([
     access(new URL("public/og.png", root)),
     access(new URL("public/academy/student-study-premium.png", root)),
-    access(new URL("public/academy/results-2025/source-board.jpg", root)),
+    access(new URL("public/academy/results-2025/source-board-full.webp", root)),
     access(new URL("public/academy/results-2025/ravneet.jpg", root)),
     access(new URL("public/academy/results-2025/student-voice-01.mp4", root)),
     access(new URL("public/academy/results-2025/student-voice-02.mp4", root)),
@@ -46,11 +46,10 @@ test("ships production metadata and required visual assets", async () => {
     access(new URL("public/academy/results-2025/student-voice-03-poster.png", root)),
     access(new URL("public/academy/results-2025/student-voice-04.mp4", root)),
     access(new URL("public/academy/results-2025/student-voice-04-poster.jpg", root)),
-    access(new URL("public/academy/results-archive/session-2023-24-original.jpeg", root)),
-    access(new URL("public/academy/results-archive/session-2023-24-refined.png", root)),
-    access(new URL("public/academy/results-archive/session-2024-25-original.jpeg", root)),
-    access(new URL("public/academy/results-archive/cbse-champions-2023-original.jpeg", root)),
-    access(new URL("public/academy/results-archive/cbse-x-2021-original.jpeg", root)),
+    access(new URL("public/academy/results-archive/session-2023-24-full.webp", root)),
+    access(new URL("public/academy/results-archive/session-2024-25-full.webp", root)),
+    access(new URL("public/academy/results-archive/cbse-champions-2023-full.webp", root)),
+    access(new URL("public/academy/results-archive/cbse-x-2021-full.webp", root)),
   ]);
 });
 
@@ -65,7 +64,22 @@ test("provides a source-linked results archive and four student videos", async (
   assert.match(results, /View original result sheet/);
   assert.match(results, /student-voice-03\.mp4/);
   assert.match(results, /student-voice-04\.mp4/);
+  assert.match(results, /Drishti", score: 91/);
+  assert.match(results, /Chanpreet", score: 79/);
   assert.match(results, /role="tablist"/);
+});
+
+test("provides a separate interactive Vedic Maths experience", async () => {
+  const [page, challenge] = await Promise.all([
+    source("app/vedic-maths/page.tsx"),
+    source("app/vedic-maths/VedicChallenge.tsx"),
+  ]);
+
+  assert.match(page, /canonical: "\/vedic-maths"/);
+  assert.match(page, /Online \+ offline batches/);
+  assert.match(page, /id="main-content"/);
+  assert.match(challenge, /THE 10-SECOND TEST/);
+  assert.match(challenge, /setTimeLeft/);
 });
 
 test("does not contain starter or broken-encoding copy", async () => {
@@ -74,6 +88,9 @@ test("does not contain starter or broken-encoding copy", async () => {
     source("app/layout.tsx"),
     source("app/EnquiryForm.tsx"),
     source("app/globals.css"),
+    source("app/vedic-maths/page.tsx"),
+    source("app/vedic-maths/VedicChallenge.tsx"),
+    source("app/vedic-maths/vedic.module.css"),
   ]);
   const combined = files.join("\n");
 
