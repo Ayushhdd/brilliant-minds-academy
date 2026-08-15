@@ -46,6 +46,9 @@ test("ships production metadata and required visual assets", async () => {
     access(new URL("public/academy/results-2025/student-voice-03-poster.png", root)),
     access(new URL("public/academy/results-2025/student-voice-04.mp4", root)),
     access(new URL("public/academy/results-2025/student-voice-04-poster.jpg", root)),
+    access(new URL("public/academy/vedic/student-reflection.mp4", root)),
+    access(new URL("public/academy/vedic/student-reflection-poster.jpg", root)),
+    access(new URL("public/academy/vedic/student-reflection-en.vtt", root)),
     access(new URL("public/academy/results-archive/session-2023-24-full.webp", root)),
     access(new URL("public/academy/results-archive/session-2024-25-full.webp", root)),
     access(new URL("public/academy/results-archive/cbse-champions-2023-full.webp", root)),
@@ -74,12 +77,18 @@ test("provides a separate interactive Vedic Maths experience", async () => {
     source("app/vedic-maths/page.tsx"),
     source("app/vedic-maths/VedicChallenge.tsx"),
   ]);
+  const storyVideo = await source("app/vedic-maths/VedicStoryVideo.tsx");
 
   assert.match(page, /canonical: "\/vedic-maths"/);
   assert.match(page, /Sunday-only Vedic Maths crash course/);
+  assert.match(storyVideo, /student-reflection\.mp4/);
+  assert.match(page, /IN A LEARNER&apos;S OWN WORDS/);
   assert.match(page, /id="main-content"/);
   assert.match(challenge, /THE 10-SECOND TEST/);
   assert.match(challenge, /setTimeLeft/);
+  assert.match(storyVideo, /Hover to preview/);
+  assert.match(storyVideo, /Tap to watch with sound/);
+  assert.match(storyVideo, /kind="captions"/);
 });
 
 test("does not contain starter or broken-encoding copy", async () => {

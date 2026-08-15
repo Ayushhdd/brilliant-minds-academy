@@ -64,13 +64,18 @@ main:focus { outline: none; }
 .brandWords small { margin-top: 2px; color: #8d7544; font-size: 8px; font-weight: 850; letter-spacing: .21em; text-transform: uppercase; }
 .desktopNav { display: flex; align-items: center; gap: 27px; }
 .desktopNav a { position: relative; color: #3c4a5e; font-size: 12px; font-weight: 750; }
-.desktopNav a[href="/vedic-maths"] { color: #44214e; }
-.desktopNav a[href="/vedic-maths"]::after { background: #44214e; }
+.desktopNav a[href="/vedic-maths"] { padding: 8px 12px; border: 1px solid rgba(112,43,135,.2); border-radius: 999px; background: linear-gradient(135deg,rgba(85,29,105,.08),rgba(145,72,167,.14)); color: #52205f; text-shadow: 0 0 13px rgba(137,60,159,.32); box-shadow: 0 0 0 1px rgba(129,54,151,.04),0 0 17px rgba(112,42,134,.15); animation: vedicNavGlow 3.2s ease-in-out infinite; }
+.desktopNav a[href="/vedic-maths"]::after { left: 12px; right: 12px; bottom: 4px; height: 1px; background: #9b56ad; box-shadow: 0 0 8px rgba(143,75,160,.75); }
+.desktopNav a[href="/vedic-maths"]:hover { color: #34113e; border-color: rgba(112,43,135,.34); box-shadow: 0 0 0 1px rgba(129,54,151,.08),0 0 22px rgba(112,42,134,.25); }
 .desktopNav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -9px; height: 2px; background: var(--gold); transition: right .25s ease; }
 .desktopNav a:hover { color: var(--navy); }
 .desktopNav a:hover::after { right: 0; }
 .navCta { padding: 14px 19px; border-radius: 5px; background: var(--navy); color: white; font-size: 11px; font-weight: 850; transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
 .navCta:hover { transform: translateY(-2px); background: var(--blue); box-shadow: 0 12px 25px rgba(7,27,52,.18); }
+
+@keyframes vedicNavGlow {
+  50% { box-shadow: 0 0 0 1px rgba(129,54,151,.08), 0 0 23px rgba(112,42,134,.24); }
+}
 
 .hero { position: relative; overflow: hidden; padding: 92px 0 0; background: linear-gradient(120deg, #06162c 0%, #082545 55%, #0e3d69 100%); color: white; }
 .heroTexture { position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px); background-size: 56px 56px; mask-image: linear-gradient(to bottom, black, transparent 88%); animation: textureDrift 16s linear infinite; }

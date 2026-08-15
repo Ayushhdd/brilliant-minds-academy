@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import VedicChallenge from "./VedicChallenge";
+import VedicStoryVideo from "./VedicStoryVideo";
 import styles from "./vedic.module.css";
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function VedicMathsPage() {
           <span className={styles.crest}>BM</span>
           <span><strong>Brilliant Minds</strong><small>VEDIC MATHEMATICS</small></span>
         </Link>
-        <nav aria-label="Vedic Maths navigation"><a href="#challenge">Challenge</a><a href="#method">The method</a><a href="#batches">Sunday batch</a></nav>
+        <nav aria-label="Vedic Maths navigation"><a href="#student-story">Student story</a><a href="#challenge">Challenge</a><a href="#method">The method</a><a href="#batches">Sunday batch</a></nav>
         <Link className={styles.headerCta} href="/#contact">Ask about a batch</Link>
       </header>
 
@@ -43,6 +44,26 @@ export default function VedicMathsPage() {
           <div className={`${styles.floatingEquation} ${styles.equationOne}`}>98 × 97</div>
           <div className={`${styles.floatingEquation} ${styles.equationTwo}`}>1,000 − 37</div>
           <div className={`${styles.floatingEquation} ${styles.equationThree}`}>125 × 48</div>
+        </div>
+      </section>
+
+      <section className={styles.videoSection} id="student-story" aria-labelledby="student-story-title">
+        <div className={styles.videoCopy}>
+          <span className={styles.eyebrow}>IN A LEARNER&apos;S OWN WORDS</span>
+          <h2 id="student-story-title">A real reflection.<br /><em>A more confident way to calculate.</em></h2>
+          <p>Hear directly from a Brilliant Minds learner about her experience. It is a simple, personal look at how guided practice can change the way Mathematics feels.</p>
+          <div className={styles.videoProof} aria-label="Vedic Maths learning rhythm">
+            <span><strong>01</strong>See the pattern</span>
+            <span><strong>02</strong>Learn the method</span>
+            <span><strong>03</strong>Practise with purpose</span>
+          </div>
+        </div>
+
+        <div className={styles.videoStage}>
+          <div className={styles.videoHalo} aria-hidden="true" />
+          <div className={styles.videoFrame}>
+            <VedicStoryVideo />
+          </div>
         </div>
       </section>
 
