@@ -1,4 +1,5 @@
 import Image from "next/image";
+import DifferenceCards from "./DifferenceCards";
 import EnquiryForm from "./EnquiryForm";
 import HeroExperience from "./HeroExperience";
 import RevealOnScroll from "./RevealOnScroll";
@@ -121,17 +122,6 @@ function BrandLockup({ footer = false }: { footer?: boolean }) {
   );
 }
 
-function DifferenceIcon({ type }: { type: "attention" | "reports" | "doubts" | "concepts" | "teachers" | "faculty" }) {
-  const common = { fill: "none", stroke: "currentColor", strokeLinecap: "round" as const, strokeLinejoin: "round" as const, strokeWidth: 1.65 };
-
-  if (type === "attention") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="11" r="5" {...common} /><path d="M10 31c1.4-6 5-9 10-9s8.6 3 10 9M4 16v15h7M29 16h7v15" {...common} /></svg>;
-  if (type === "reports") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><rect x="10" y="6" width="20" height="28" rx="2" {...common} /><path d="M16 6v-2h8v2M15 16l3 3 6-7M15 26h10" {...common} /></svg>;
-  if (type === "doubts") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="M7 8h26v18H19l-7 7v-7H7zM18 14a3 3 0 1 1 5 2.5c-2 1.3-2.5 2-2.5 4M20.5 23h.01" {...common} /></svg>;
-  if (type === "concepts") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" {...common} /><circle cx="20" cy="20" r="7" {...common} /><path d="m20 20 12-12M27 8h5v5" {...common} /></svg>;
-  if (type === "teachers") return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="m7 17 13-7 13 7-13 7zM12 20v7c4.8 4 11.2 4 16 0v-7M33 18v8" {...common} /><circle cx="33" cy="28" r="1.6" {...common} /></svg>;
-  return <svg className="differenceIcon" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 7h10c3 0 5 2 5 5v21c0-3-2-5-5-5H8zM32 7H22c-3 0-5 2-5 5v21c0-3 2-5 5-5h10zM12 13h6M26 13h3M12 18h6M26 18h3" {...common} /></svg>;
-}
-
 export default function Home() {
   return (
     <main id="main-content" tabIndex={-1}>
@@ -226,70 +216,9 @@ export default function Home() {
                 <span className="sectionLabel lightLabel">THE BRILLIANT DIFFERENCE</span>
                 <h3>More than a class. <em>A system that keeps students moving.</em></h3>
                 <p>Focused batches, timely doubt support and a routine that turns effort into visible progress.</p>
-                <p className="differenceInteractionHint"><span className="desktopFlipHint">Hover a card to reveal the classroom image.</span><span className="mobileFlipHint">Swipe to browse &middot; Tap a card to flip.</span></p>
+                <p className="differenceInteractionHint"><span className="desktopFlipHint">Hover a card to reveal the classroom image.</span><span className="mobileFlipHint">Swipe to browse &middot; Tap a card to flip it, then tap again to return.</span></p>
               </div>
-              <div className="journeyDifferenceGrid">
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Small batches, personal attention. Hover on desktop or tap on a touch device to reveal the classroom image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>01</span><DifferenceIcon type="attention" /><strong>Small batches, personal attention</strong><p>Each learner is noticed, guided and supported at the right pace.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
-                      <Image src="/academy/difference/small-batches-personal-attention-blurred-v2.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Weekly tests and performance reports. Hover on desktop or tap on a touch device to reveal the assessment image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>02</span><DifferenceIcon type="reports" /><strong>Weekly tests &amp; performance reports</strong><p>Regular checks make progress clear for students and parents.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
-                      <Image src="/academy/difference/weekly-tests-performance-reports.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Dedicated doubt-clearing sessions. Hover on desktop or tap on a touch device to reveal the guidance image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>03</span><DifferenceIcon type="doubts" /><strong>Dedicated doubt-clearing sessions</strong><p>Questions are addressed before they become learning gaps.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack differenceFlipBackDoubts" aria-hidden="true">
-                      <Image src="/academy/difference/dedicated-doubt-clearing.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Concept-based learning. Hover on desktop or tap on a touch device to reveal the hands-on geometry image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>04</span><DifferenceIcon type="concepts" /><strong>Concept-based learning</strong><p>Students understand the method instead of only memorising answers.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
-                      <Image src="/academy/difference/concept-based-learning.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Experienced, dedicated teachers. Hover on desktop or tap on a touch device to reveal the classroom teaching image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>05</span><DifferenceIcon type="teachers" /><strong>Experienced, dedicated teachers</strong><p>Patient teaching builds clarity, discipline and confidence.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
-                      <Image src="/academy/difference/experienced-dedicated-teachers.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-                <article className="differenceFlipCard" tabIndex={0} aria-label="Qualified subject faculty. Hover on desktop or tap on a touch device to reveal the subject specialist image.">
-                  <div className="differenceFlipInner">
-                    <div className="differenceFlipFace differenceFlipFront">
-                      <span>06</span><DifferenceIcon type="faculty" /><strong>Qualified subject faculty</strong><p>Reliable academic support across the subjects that matter most.</p>
-                    </div>
-                    <div className="differenceFlipFace differenceFlipBack" aria-hidden="true">
-                      <Image src="/academy/difference/qualified-subject-faculty.png" fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
-                    </div>
-                  </div>
-                </article>
-              </div>
+              <DifferenceCards />
         </aside>
       </section>
 

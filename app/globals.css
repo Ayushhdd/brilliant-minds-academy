@@ -243,13 +243,17 @@ main:focus { outline: none; }
 .journeyDifferenceGrid article.differenceFlipCard { aspect-ratio: 9 / 10; padding: 0; border: 0; background: transparent; box-shadow: none; perspective: 1100px; cursor: pointer; }
 .journeyDifferenceGrid article.differenceFlipCard::before { display: none; }
 .differenceFlipInner { position: absolute; inset: 0; transform-style: preserve-3d; }
-.differenceFlipCard:focus { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+.differenceFlipCard:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
 .differenceFlipFace { position: absolute; inset: 0; overflow: hidden; padding: 28px 25px; border: 1px solid rgba(244,217,147,.35); border-radius: 11px; background: linear-gradient(145deg, #173f68, #082443); box-shadow: 0 14px 25px rgba(7,27,52,.18), inset 0 1px 0 rgba(255,255,255,.13); backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: transform .72s cubic-bezier(.2,.7,.2,1), opacity .18s ease; will-change: transform, opacity; }
 .differenceFlipFront { z-index: 2; opacity: 1; transform: rotateY(0deg); }
 .differenceFlipFront::before { content: ""; position: absolute; top: 0; right: 24px; left: 24px; height: 3px; background: var(--gold-light); box-shadow: 0 2px 9px rgba(244,217,147,.35); }
 .differenceFlipBack { z-index: 1; padding: 0; opacity: 0; transform: rotateY(180deg); background: #082443; }
-.differenceFlipCard:hover .differenceFlipFront, .differenceFlipCard:focus .differenceFlipFront { z-index: 1; opacity: 0; transform: rotateY(-180deg); }
-.differenceFlipCard:hover .differenceFlipBack, .differenceFlipCard:focus .differenceFlipBack { z-index: 3; opacity: 1; transform: rotateY(0deg); }
+.differenceFlipCard.isFlipped .differenceFlipFront { z-index: 1; opacity: 0; transform: rotateY(-180deg); }
+.differenceFlipCard.isFlipped .differenceFlipBack { z-index: 3; opacity: 1; transform: rotateY(0deg); }
+@media (hover: hover) and (pointer: fine) {
+  .differenceFlipCard:hover .differenceFlipFront { z-index: 1; opacity: 0; transform: rotateY(-180deg); }
+  .differenceFlipCard:hover .differenceFlipBack { z-index: 3; opacity: 1; transform: rotateY(0deg); }
+}
 .differenceFlipBack::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(244,217,147,.38); border-radius: inherit; box-shadow: inset 0 0 34px rgba(7,27,52,.2); pointer-events: none; }
 .differenceFlipBack img { object-fit: cover; object-position: center; }
 .differenceFlipBackDoubts img { object-position: 50% 44%; }
@@ -750,16 +754,18 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .differenceInteractionHint { margin-top: 13px !important; color: #5f4b25 !important; }
   .desktopFlipHint { display: none; }
   .mobileFlipHint { display: inline; }
-  .journeyDifferenceGrid { margin: 18px -18px -5px 0; padding: 0 18px 12px 0; display: flex; gap: 12px; overflow-x: auto; overflow-y: visible; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
-  .journeyDifferenceGrid article.differenceFlipCard { flex: 0 0 min(78vw, 312px); aspect-ratio: 4 / 3; min-height: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .journeyDifferenceGrid { margin: 18px -18px -5px 0; padding: 0 18px 12px 0; display: flex; gap: 16px; overflow-x: auto; overflow-y: visible; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+  .journeyDifferenceGrid article.differenceFlipCard { flex: 0 0 min(70vw, 280px); aspect-ratio: 4 / 3; min-height: 0; scroll-snap-align: start; scroll-snap-stop: always; }
+  .differenceFlipCard:not(.isFlipped):hover .differenceFlipFront { z-index: 2; opacity: 1; transform: rotateY(0deg); }
+  .differenceFlipCard:not(.isFlipped):hover .differenceFlipBack { z-index: 1; opacity: 0; transform: rotateY(180deg); }
   .differenceFlipFace { padding: 19px; }
   .differenceFlipBack { padding: 0; }
   .differenceIcon { top: 15px; right: 15px; }
   .journeyDifferenceGrid strong { margin-top: 33px; font-size: 15px; }
   .journeyDifferenceGrid p { font-size: 11px; line-height: 1.55; }
 
-  .tuitionGrid { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 12px; overflow-x: auto; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
-  .tuitionCard { flex: 0 0 min(78vw, 312px); min-height: 270px; padding: 20px; scroll-snap-align: start; scroll-snap-stop: always; }
+  .tuitionGrid { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 16px; overflow-x: auto; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
+  .tuitionCard { flex: 0 0 min(86vw, 350px); min-height: 330px; padding: 22px; scroll-snap-align: start; scroll-snap-stop: always; }
   .cardTop small, .tuitionCard > p { display: block; }
   .tuitionCard h3 { margin: 42px 0 6px; font-size: 31px; }
   .tuitionCard > strong { font-size: 13px; }

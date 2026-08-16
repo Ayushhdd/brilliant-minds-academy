@@ -9,11 +9,6 @@ type Achiever = {
   image: string;
 };
 
-type ArchiveHighlight = {
-  name: string;
-  score?: number;
-};
-
 type SessionBase = {
   id: string;
   label: string;
@@ -25,20 +20,9 @@ type SessionBase = {
   sourceCopy: string;
 };
 
-type CurrentSession = SessionBase & {
-  kind: "current";
+type ResultSession = SessionBase & {
   achievers: Achiever[];
 };
-
-type ArchiveSession = SessionBase & {
-  kind: "archive";
-  sheet: string;
-  sheetClass?: string;
-  highlights: ArchiveHighlight[];
-  archiveNote: string;
-};
-
-type ResultSession = CurrentSession | ArchiveSession;
 
 const currentAchievers: Achiever[] = [
   { name: "Ravneet", score: 98, image: "/academy/results-2025/ravneet-enhanced.png" },
@@ -59,7 +43,6 @@ const resultSessions: ResultSession[] = [
     source: "/academy/results-2025/source-board-full.webp",
     sourceTitle: "Academy record - 2025-26",
     sourceCopy: "Names and marks are reproduced from the latest result sheet supplied by Brilliant Minds Academy.",
-    kind: "current",
     achievers: currentAchievers,
   },
   {
@@ -71,13 +54,15 @@ const resultSessions: ResultSession[] = [
     source: "/academy/results-archive/session-2024-25-full.webp",
     sourceTitle: "Academy record - 2024-25",
     sourceCopy: "Highlights are transcribed from the supplied sheet. Open the original for the complete record.",
-    kind: "archive",
-    sheet: "/academy/results-archive/session-2024-25-full.webp",
-    highlights: [
-      { name: "Kanav", score: 95 }, { name: "Ruchi", score: 93 }, { name: "Jasdeep", score: 84 },
-      { name: "Sanvi", score: 84 }, { name: "Arshpreet", score: 80 }, { name: "Aniket", score: 80 }, { name: "Chanpreet", score: 79 },
+    achievers: [
+      { name: "Kanav", score: 95, image: "/academy/results-archive/portraits/2024-25-kanav-refined.webp" },
+      { name: "Ruchi", score: 93, image: "/academy/results-archive/portraits/2024-25-ruchi-refined.webp" },
+      { name: "Jasdeep", score: 84, image: "/academy/results-archive/portraits/2024-25-jasdeep-refined.webp" },
+      { name: "Sanvi", score: 84, image: "/academy/results-archive/portraits/2024-25-sanvi-refined.webp" },
+      { name: "Arshpreet", score: 80, image: "/academy/results-archive/portraits/2024-25-arshpreet-refined.webp" },
+      { name: "Aniket", score: 80, image: "/academy/results-archive/portraits/2024-25-aniket-refined.webp" },
+      { name: "Chanpreet", score: 79, image: "/academy/results-archive/portraits/2024-25-chanpreet-refined.webp" },
     ],
-    archiveNote: "The photographed achievement sheet has been gently corrected for clearer viewing while retaining the original record.",
   },
   {
     id: "2023-24",
@@ -88,14 +73,15 @@ const resultSessions: ResultSession[] = [
     source: "/academy/results-archive/session-2023-24-full.webp",
     sourceTitle: "Academy record - 2023-24",
     sourceCopy: "The supplied result sheet remains the complete, original source for this session.",
-    kind: "archive",
-    sheet: "/academy/results-archive/session-2023-24-full.webp",
-    highlights: [
-      { name: "Manreet Kaur", score: 99 }, { name: "Manvir Singh", score: 98 }, { name: "Prachi Sharma", score: 95 },
-      { name: "Ramneek Kaur", score: 93 }, { name: "Drishti", score: 91 }, { name: "Jatin Nahar", score: 88 },
-      { name: "Loveleen Kaur", score: 87 }, { name: "Namya", score: 85 },
+    achievers: [
+      { name: "Manreet Kaur", score: 99, image: "/academy/results-archive/portraits/2023-24-manreet-kaur-refined.webp" },
+      { name: "Manvir Singh", score: 98, image: "/academy/results-archive/portraits/2023-24-manvir-singh-refined.webp" },
+      { name: "Prachi Sharma", score: 95, image: "/academy/results-archive/portraits/2023-24-prachi-sharma-refined.webp" },
+      { name: "Ramneek Kaur", score: 93, image: "/academy/results-archive/portraits/2023-24-ramneek-kaur-refined.webp" },
+      { name: "Drishti", score: 91, image: "/academy/results-archive/portraits/2023-24-drishti-refined.webp" },
+      { name: "Jatin Nahar", score: 88, image: "/academy/results-archive/portraits/2023-24-jatin-nahar-refined.webp" },
+      { name: "Loveleen Kaur", score: 87, image: "/academy/results-archive/portraits/2023-24-loveleen-kaur-refined.webp" },
     ],
-    archiveNote: "The complete supplied sheet is shown here, including every visible name and score from the session.",
   },
   {
     id: "2023",
@@ -106,14 +92,15 @@ const resultSessions: ResultSession[] = [
     source: "/academy/results-archive/cbse-champions-2023-full.webp",
     sourceTitle: "Academy record - CBSE Champions 2023",
     sourceCopy: "Highlights are transcribed from the supplied sheet. Open the original for the complete record.",
-    kind: "archive",
-    sheet: "/academy/results-archive/cbse-champions-2023-full.webp",
-    sheetClass: "archiveSheetImage--portrait",
-    highlights: [
-      { name: "Yashleen", score: 97 }, { name: "Arshita Aggarwal", score: 95 }, { name: "Jai Aggarwal", score: 93 },
-      { name: "Karamjit Singh", score: 90 }, { name: "Namanjot Kaur", score: 89 }, { name: "Gurleen Kaur", score: 86 }, { name: "Raghav Hans", score: 85 },
+    achievers: [
+      { name: "Yashleen", score: 97, image: "/academy/results-archive/portraits/2023-yashleen-refined.webp" },
+      { name: "Arshita Aggarwal", score: 95, image: "/academy/results-archive/portraits/2023-arshita-aggarwal-refined.webp" },
+      { name: "Jai Aggarwal", score: 93, image: "/academy/results-archive/portraits/2023-jai-aggarwal-refined.webp" },
+      { name: "Karamjit Singh", score: 90, image: "/academy/results-archive/portraits/2023-karamjit-singh-refined.webp" },
+      { name: "Namanjot Kaur", score: 89, image: "/academy/results-archive/portraits/2023-namanjot-kaur-refined.webp" },
+      { name: "Gurleen Kaur", score: 86, image: "/academy/results-archive/portraits/2023-gurleen-kaur-refined.webp" },
+      { name: "Raghav Hans", score: 85, image: "/academy/results-archive/portraits/2023-raghav-hans-refined.webp" },
     ],
-    archiveNote: "A clean archive view for the original Class X Mathematics champions sheet.",
   },
   {
     id: "2021",
@@ -124,13 +111,14 @@ const resultSessions: ResultSession[] = [
     source: "/academy/results-archive/cbse-x-2021-full.webp",
     sourceTitle: "Academy record - CBSE Class X 2021",
     sourceCopy: "Highlights are transcribed from the supplied sheet. Open the original for the complete record.",
-    kind: "archive",
-    sheet: "/academy/results-archive/cbse-x-2021-full.webp",
-    highlights: [
-      { name: "Pranav Bhalla", score: 96 }, { name: "Nippunjot Kaur", score: 96 }, { name: "Hirdey Sikka", score: 96 },
-      { name: "Madhuram Sharma", score: 96 }, { name: "Vanshaj Hans", score: 93 }, { name: "Kiratpal Singh", score: 82 },
+    achievers: [
+      { name: "Pranav Bhalla", score: 96, image: "/academy/results-archive/portraits/2021-pranav-bhalla.webp" },
+      { name: "Nippunjot Kaur", score: 96, image: "/academy/results-archive/portraits/2021-nippunjot-kaur.webp" },
+      { name: "Hirdey Sikka", score: 96, image: "/academy/results-archive/portraits/2021-hirdey-sikka.webp" },
+      { name: "Madhuram Sharma", score: 96, image: "/academy/results-archive/portraits/2021-madhuram-sharma.webp" },
+      { name: "Vanshaj Hans", score: 93, image: "/academy/results-archive/portraits/2021-vanshaj-hans.webp" },
+      { name: "Kiratpal Singh", score: 82, image: "/academy/results-archive/portraits/2021-kiratpal-singh.webp" },
     ],
-    archiveNote: "A clean archive view for the original CBSE Class X result sheet.",
   },
 ];
 
@@ -289,7 +277,7 @@ function AchievementCards({ achievers }: { achievers: Achiever[] }) {
               width={480}
               height={560}
               sizes="(max-width: 760px) 46vw, (max-width: 1080px) 30vw, 370px"
-              quality={75}
+              quality={82}
               alt={`${student.name}, Class X Mathematics achiever with ${student.score} marks out of 100`}
             />
           </div>
@@ -300,33 +288,6 @@ function AchievementCards({ achievers }: { achievers: Achiever[] }) {
           </div>
         </article>
       ))}
-    </div>
-  );
-}
-
-function ArchiveResults({ session }: { session: ArchiveSession }) {
-  return (
-    <div className="archiveResults">
-        <a className="archiveSheet" href={session.source} target="_blank" rel="noreferrer" aria-label={`Open the original ${session.label} result sheet`}>
-          <div className={`archiveSheetImage${session.sheetClass ? ` ${session.sheetClass}` : ""}`}>
-            <Image src={session.sheet} fill sizes="(max-width: 760px) 100vw, 56vw" quality={75} alt={`${session.title} result sheet`} />
-          </div>
-          <span>Open original sheet <b aria-hidden="true">&#8599;</b></span>
-        </a>
-        <div className="archiveDetails">
-          <span className="archiveEyebrow">SHEET HIGHLIGHTS</span>
-          <h3>{session.title}</h3>
-          <p>{session.archiveNote}</p>
-          <div className="archiveScores">
-            {session.highlights.map((student, index) => (
-              <div key={student.name}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{student.name}</strong>
-                {student.score ? <b>{student.score}<small>/100</small></b> : <em>Shown on sheet</em>}
-              </div>
-            ))}
-          </div>
-        </div>
     </div>
   );
 }
@@ -351,7 +312,7 @@ export default function ResultsShowcase() {
         </div>
 
         <div id="result-session-panel" role="tabpanel" aria-labelledby={`result-session-${activeSession.id}`}>
-          {activeSession.kind === "current" ? <AchievementCards achievers={activeSession.achievers} /> : <ArchiveResults session={activeSession} />}
+          <AchievementCards achievers={activeSession.achievers} />
         </div>
       </div>
 
