@@ -497,9 +497,8 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .brandWords strong { font-size: 16px; }
   .brandWords small { font-size: 7px; }
   .navCta { min-height: 44px; padding: 0 13px; display: inline-flex; align-items: center; font-size: 10px; }
-  .mobileVedicLink { position: relative; isolation: isolate; min-height: 38px; padding: 0 11px; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(142,72,164,.56); border-radius: 999px; background: linear-gradient(135deg,#2e0e45,#6c2d82 58%,#3c1558); color: #fff4d5; font-size: 8px; font-weight: 900; line-height: 1; letter-spacing: .015em; white-space: nowrap; box-shadow: 0 5px 13px rgba(78,20,102,.28), inset 0 1px 0 rgba(255,255,255,.26), inset 0 -1px 0 rgba(17,3,28,.26); text-shadow: 0 1px 5px rgba(0,0,0,.3); }
-  .mobileVedicLink::before { content: ""; position: absolute; z-index: -1; width: 46px; height: 46px; top: -27px; right: -10px; border-radius: 50%; background: rgba(244,217,147,.42); filter: blur(9px); }
-  .mobileVedicLink::after { content: "✦"; margin-left: 5px; color: #f5d787; font-size: 9px; text-shadow: 0 0 9px rgba(244,217,147,.8); }
+  .mobileVedicLink { position: relative; min-height: 38px; padding: 0 11px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(102,43,122,.36); border-radius: 5px; background: linear-gradient(135deg,#fcf9fc,#f0e5f1); color: #52205f; font-size: 8px; font-weight: 900; line-height: 1; letter-spacing: .015em; white-space: nowrap; box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 3px 8px rgba(75,28,91,.1); }
+  .mobileVedicLink::after { content: ""; position: absolute; right: 10px; bottom: 7px; left: 10px; height: 1px; background: #b78343; opacity: .85; }
   .dynamicHero { height: 220svh; }
   .dynamicHeroSticky { top: 72px; height: calc(100svh - 72px); min-height: 0; }
   .dynamicHeroShell { grid-template-columns: 1fr; grid-template-rows: minmax(245px, .92fr) minmax(220px, 1.08fr); gap: 12px; padding-top: 18px; padding-bottom: 42px; }
