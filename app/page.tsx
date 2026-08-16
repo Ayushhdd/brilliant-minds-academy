@@ -202,7 +202,7 @@ export default function Home() {
                 </div>
                 {item.image && (
                   <div className="journeyPhoto">
-                    <Image src={item.image} fill sizes="(max-width: 760px) 100vw, 24vw" quality={90} alt={`${item.title} — a student progressing through the learning journey`} />
+                    <Image src={item.image} fill sizes="(max-width: 600px) 78vw, (max-width: 1080px) 100vw, 24vw" quality={75} alt={`${item.title} — a student progressing through the learning journey`} />
                     <span aria-hidden="true">{item.step}</span>
                   </div>
                 )}

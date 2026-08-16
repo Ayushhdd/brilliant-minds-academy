@@ -20,109 +20,53 @@ export default function HeroExperience() {
   const heroRef = useRef<HTMLElement>(null);
   const frameRef = useRef<number | null>(null);
   const stageRef = useRef(0);
-  const scrollGestureRef = useRef(false);
-  const gestureDirectionRef = useRef<0 | 1 | -1>(0);
-  const gestureTimerRef = useRef<number | null>(null);
   const [stage, setStage] = useState(0);
 
   useEffect(() => {
     if (shouldUseLightweightExperience()) {
-      heroRef.current?.style.setProperty("--hero-scroll", "0");
-      return;
-    }
-
-    const updateHero = () => {
-      frameRef.current = null;
-      const hero = heroRef.current;
-      if (!hero) return;
-
-      const rect = hero.getBoundingClientRect();
-      const travel = Math.max(hero.offsetHeight - window.innerHeight, 1);
-      const progress = Math.min(1, Math.max(0, -rect.top / travel));
-      hero.style.setProperty("--hero-scroll", progress.toFixed(3));
-    };
-
-    const requestUpdate = () => {
-      if (frameRef.current !== null) return;
-      frameRef.current = window.requestAnimationFrame(updateHero);
-    };
-
-    updateHero();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (shouldUseLightweightExperience()) {
       stageRef.current = 0;
-      setStage(0);
       return;
     }
 
     const desktopQuery = window.matchMedia("(min-width: 761px)");
-
-    const resetForMobile = () => {
-      if (desktopQuery.matches) return;
-      stageRef.current = 0;
-      scrollGestureRef.current = false;
-      gestureDirectionRef.current = 0;
-      setStage(0);
-    };
-
-    const releaseGesture = () => {
-      scrollGestureRef.current = false;
-      gestureDirectionRef.current = 0;
-      gestureTimerRef.current = null;
-    };
-
-    const advanceStage = (nextStage: number) => {
+    const setHeroStage = (nextStage: number) => {
+      if (nextStage === stageRef.current) return;
       stageRef.current = nextStage;
-      heroRef.current?.setAttribute("data-stage", String(nextStage));
       setStage(nextStage);
     };
-
-    const handleWheel = (event: WheelEvent) => {
-      if (!desktopQuery.matches || Math.abs(event.deltaY) < 1) return;
+    const updateHero = () => {
+      frameRef.current = null;
+      if (!desktopQuery.matches) {
+        setHeroStage(0);
+        return;
+      }
 
       const hero = heroRef.current;
       if (!hero) return;
-
       const rect = hero.getBoundingClientRect();
-      const isHeroInFocus = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5;
-      if (!isHeroInFocus) return;
-
-      const direction: 1 | -1 = event.deltaY > 0 ? 1 : -1;
-      const currentStage = stageRef.current;
-      const canAdvance = direction > 0 && currentStage < 2;
-      const canReturn = direction < 0 && currentStage > 0;
-      if (!canAdvance && !canReturn) return;
-
-      event.preventDefault();
-
-      if (!scrollGestureRef.current || gestureDirectionRef.current !== direction) {
-        advanceStage(currentStage + direction);
-        scrollGestureRef.current = true;
-        gestureDirectionRef.current = direction;
-      }
-
-      if (gestureTimerRef.current !== null) window.clearTimeout(gestureTimerRef.current);
-      gestureTimerRef.current = window.setTimeout(releaseGesture, 190);
+      const travel = Math.max(hero.offsetHeight - window.innerHeight, 1);
+      const progress = Math.min(1, Math.max(0, -rect.top / travel));
+      setHeroStage(progress < 1 / 3 ? 0 : progress < 2 / 3 ? 1 : 2);
+    };
+    const requestUpdate = () => {
+      if (frameRef.current === null) frameRef.current = window.requestAnimationFrame(updateHero);
+    };
+    const resetForBreakpoint = () => {
+      stageRef.current = 0;
+      setStage(0);
+      requestUpdate();
     };
 
-    resetForMobile();
-    desktopQuery.addEventListener("change", resetForMobile);
-    window.addEventListener("wheel", handleWheel, { passive: false });
+    updateHero();
+    desktopQuery.addEventListener("change", resetForBreakpoint);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
 
     return () => {
-      desktopQuery.removeEventListener("change", resetForMobile);
-      window.removeEventListener("wheel", handleWheel);
-      if (gestureTimerRef.current !== null) window.clearTimeout(gestureTimerRef.current);
+      desktopQuery.removeEventListener("change", resetForBreakpoint);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
     };
   }, []);
 
@@ -182,7 +126,7 @@ export default function HeroExperience() {
             <div className="dynamicAchievers" aria-label="Top Class X Mathematics achievers">
               {heroAchievers.map((student, index) => (
                 <article key={student.name} style={{ "--student-index": index } as CSSProperties}>
-                  <div><Image src={student.image} fill sizes="150px" alt={`${student.name}, ${student.score} marks out of 100`} priority /></div>
+                  <div><Image src={student.image} fill sizes="150px" alt={`${student.name}, ${student.score} marks out of 100`} /></div>
                   <span>{student.name}</span><strong>{student.score}<small>/100</small></strong>
                 </article>
               ))}

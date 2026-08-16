@@ -19,12 +19,16 @@ export default function VedicChallenge() {
 
   useEffect(() => {
     if (state !== "active") return;
-    if (timeLeft <= 0) {
-      setState("expired");
-      return;
-    }
+    if (timeLeft <= 0) return;
 
-    const timer = window.setTimeout(() => setTimeLeft((current) => current - 1), 1000);
+    const timer = window.setTimeout(() => {
+      if (timeLeft === 1) {
+        setTimeLeft(0);
+        setState("expired");
+        return;
+      }
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
     return () => window.clearTimeout(timer);
   }, [state, timeLeft]);
 

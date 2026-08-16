@@ -277,7 +277,7 @@ function AchievementCards({ achievers }: { achievers: Achiever[] }) {
               width={480}
               height={560}
               sizes="(max-width: 760px) 46vw, (max-width: 1080px) 30vw, 370px"
-              quality={82}
+              quality={75}
               alt={`${student.name}, Class X Mathematics achiever with ${student.score} marks out of 100`}
             />
           </div>
