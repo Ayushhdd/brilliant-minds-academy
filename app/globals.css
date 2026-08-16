@@ -728,6 +728,14 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
 /* Phone-first content rails: related cards stay together instead of becoming one long vertical stack. */
 @media (max-width: 600px) {
   .section { padding: 66px 0; }
+  .experienceSection { padding: 48px 0; }
+  .experienceGrid { gap: 30px; }
+  .experienceNumber { min-height: 196px; padding: 20px; box-shadow: 8px 8px 0 var(--gold); }
+  .experienceNumber > span { font-size: 88px; }
+  .experienceStory h2 { font-size: 32px; line-height: 1.07; }
+  .experienceProof div { padding: 12px 0; }
+  .experienceProof strong { font-size: 14px; }
+  .experienceProof span { margin-top: 5px; font-size: 10px; line-height: 1.45; }
   .sectionHead { margin-bottom: 34px; }
   .journeySection { padding: 66px 0; }
   .vedicSection { padding: 54px 0; }
