@@ -144,6 +144,7 @@ export default function Home() {
       <header className="siteHeader">
         <div className="container navShell">
           <a className="brand" href="#home" aria-label="Brilliant Minds Maths Academy home"><BrandLockup /></a>
+          <a className="mobileVedicLink" href="/vedic-maths">Vedic Maths</a>
           <nav className="desktopNav" aria-label="Main navigation">
             <a href="#experience">Experience</a>
             <a href="#journey">The journey</a>
