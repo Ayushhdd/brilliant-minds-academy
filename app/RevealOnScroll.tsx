@@ -2,15 +2,11 @@
 
 import { useEffect } from "react";
 
-type PerformanceNavigator = Navigator & { deviceMemory?: number };
-
 function shouldUseLightweightExperience() {
-  const navigatorWithMemory = navigator as PerformanceNavigator;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const limitedMemory = (navigatorWithMemory.deviceMemory ?? 8) <= 4;
-  const limitedCpu = (navigator.hardwareConcurrency ?? 8) <= 4;
-
-  return reducedMotion || limitedMemory || limitedCpu;
+  // Safari reports conservative hardware values, including on recent iPhones.
+  // Respect the visitor's motion preference, but do not silently disable the
+  // interactive experience based on an unreliable hardware guess.
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 export default function RevealOnScroll() {

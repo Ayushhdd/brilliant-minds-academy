@@ -4,16 +4,10 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 
-type PerformanceNavigator = Navigator & { deviceMemory?: number };
-
 function shouldUseLightweightExperience() {
-  const navigatorWithMemory = navigator as PerformanceNavigator;
-
-  return (
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-    (navigatorWithMemory.deviceMemory ?? 8) <= 4 ||
-    (navigator.hardwareConcurrency ?? 8) <= 4
-  );
+  // iOS can expose a low core count even on fast phones.  The operating
+  // system's Reduce Motion choice is the reliable accessibility signal.
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 const heroAchievers = [
