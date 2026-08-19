@@ -220,7 +220,7 @@ export default function Home() {
                 <span className="sectionLabel lightLabel">THE BRILLIANT DIFFERENCE</span>
                 <h3>More than a class. <em>A system that keeps students moving.</em></h3>
                 <p>Focused batches, timely doubt support and a routine that turns effort into visible progress.</p>
-                <p className="differenceInteractionHint"><span className="desktopFlipHint">Hover a card to reveal the classroom image.</span><span className="mobileFlipHint">Swipe to browse &middot; Tap a card to flip it, then tap again to return.</span></p>
+                <p className="differenceInteractionHint"><span className="desktopFlipHint">Hover a card to reveal the classroom image.</span><span className="mobileFlipHint">Swipe to browse &middot; Tap a blue card to reveal its classroom photo.</span></p>
               </div>
               <DifferenceCards />
         </aside>

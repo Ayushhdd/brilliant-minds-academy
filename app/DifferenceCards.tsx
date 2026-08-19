@@ -51,6 +51,7 @@ export default function DifferenceCards() {
             <div className="differenceFlipInner">
               <div aria-hidden={isFlipped} className="differenceFlipFace differenceFlipFront">
                 <span>{card.number}</span><DifferenceIcon type={card.type} /><strong>{card.title}</strong><p>{card.copy}</p>
+                <span className="differenceTapHint" aria-hidden="true"><i>↻</i> Tap to flip</span>
               </div>
               <div aria-hidden={!isFlipped} className={`differenceFlipFace differenceFlipBack${card.imageClass ? ` ${card.imageClass}` : ""}`}>
                 <Image src={card.image} fill sizes="(max-width: 760px) 50vw, 16vw" alt="" />
