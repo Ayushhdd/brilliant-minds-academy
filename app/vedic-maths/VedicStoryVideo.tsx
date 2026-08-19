@@ -67,7 +67,7 @@ export default function VedicStoryVideo() {
         ref={videoRef}
         controls={isActive}
         playsInline
-        preload="metadata"
+        preload="none"
         poster="/academy/vedic/student-reflection-poster.jpg"
         aria-label="A Brilliant Minds learner sharing her experience"
         onEnded={resetVideo}

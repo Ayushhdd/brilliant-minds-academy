@@ -6,7 +6,12 @@ function shouldUseLightweightExperience() {
   // Safari reports conservative hardware values, including on recent iPhones.
   // Respect the visitor's motion preference, but do not silently disable the
   // interactive experience based on an unreliable hardware guess.
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    window.matchMedia("(prefers-reduced-data: reduce)").matches ||
+    connection?.saveData === true
+  );
 }
 
 export default function RevealOnScroll() {

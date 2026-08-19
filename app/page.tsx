@@ -40,6 +40,7 @@ const tuitionProgrammes = [
     note: "Personally guided by the academy’s lead Mathematics educator.",
     points: ["Concept clarity", "School & CBSE alignment", "Chapter-wise tests"],
     tone: "maths",
+    background: "/academy/tuition/maths-background-v2.png",
   },
   {
     number: "02",
@@ -48,6 +49,7 @@ const tuitionProgrammes = [
     note: "Focused Physics, Chemistry and Biology support from subject faculty.",
     points: ["Clear explanations", "Written-answer practice", "Exam preparation"],
     tone: "science",
+    background: "/academy/tuition/science-background-v2.png",
   },
   {
     number: "03",
@@ -56,6 +58,7 @@ const tuitionProgrammes = [
     note: "Complete subject support, with Mathematics personally guided by the lead educator.",
     points: ["Homework guidance", "Foundation strengthening", "Regular revision"],
     tone: "foundation",
+    background: "/academy/tuition/foundation-background-v2.png",
   },
 ];
 
@@ -233,6 +236,14 @@ export default function Home() {
           <div className="tuitionGrid staggerGrid" data-reveal>
             {tuitionProgrammes.map((programme) => (
               <article className={`tuitionCard ${programme.tone}`} key={programme.subject}>
+                <Image
+                  className="tuitionBackground"
+                  src={programme.background}
+                  fill
+                  sizes="(max-width: 480px) 82vw, (max-width: 760px) 33vw, 33vw"
+                  quality={90}
+                  alt=""
+                />
                 <div className="cardTop"><span>{programme.number}</span><small>OFFLINE AT ACADEMY</small></div>
                 <h3>{programme.subject}</h3>
                 <strong>{programme.classes}</strong>

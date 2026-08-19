@@ -204,7 +204,7 @@ function StudentStoryCard({ story }: { story: StudentStory }) {
         <video
           ref={videoRef}
           poster={story.poster}
-          preload="metadata"
+          preload="none"
           playsInline
           muted={!soundMode}
           loop

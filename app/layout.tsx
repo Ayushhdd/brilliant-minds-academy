@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const metadataBase = new URL(`${protocol}://${host}`);
+// The fallback is the project preview URL. Replace it in the production
+// environment with the purchased domain through NEXT_PUBLIC_SITE_URL.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://brilliant-minds-academy.vercel.app";
 
-  return {
-    metadataBase,
+export const metadata: Metadata = {
+    // This is resolved at build time, so metadata does not make the route
+    // dynamic for every visitor.
+    metadataBase: new URL(siteUrl),
     title: "Brilliant Minds Academy | 25+ Years of Maths Tuition in Jalandhar",
     description:
       "Brilliant Minds Academy offers offline academic tuition in Jalandhar with 25+ years of Mathematics teaching experience, plus a Sunday-only Vedic Maths crash course.",
@@ -38,8 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: "25+ years of Mathematics teaching, offline academic tuition and a Sunday-only Vedic Maths crash course in Jalandhar.",
       images: ["/og.png"],
     },
-  };
-}
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

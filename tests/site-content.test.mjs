@@ -30,8 +30,10 @@ test("contains the academy's core programmes and conversion paths", async () => 
 test("ships production metadata and required visual assets", async () => {
   const layout = await source("app/layout.tsx");
 
-  assert.match(layout, /generateMetadata/);
-  assert.match(layout, /x-forwarded-host/);
+  assert.match(layout, /export const metadata: Metadata/);
+  assert.match(layout, /NEXT_PUBLIC_SITE_URL/);
+  assert.match(layout, /metadataBase: new URL\(siteUrl\)/);
+  assert.doesNotMatch(layout, /from "next\/headers"/);
   assert.match(layout, /images: \["\/og\.png"\]/);
   assert.doesNotMatch(layout, /metadataBase: new URL\("http:\/\/localhost:3000"\)/);
 

@@ -7,7 +7,12 @@ import type { CSSProperties } from "react";
 function shouldUseLightweightExperience() {
   // iOS can expose a low core count even on fast phones.  The operating
   // system's Reduce Motion choice is the reliable accessibility signal.
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    window.matchMedia("(prefers-reduced-data: reduce)").matches ||
+    connection?.saveData === true
+  );
 }
 
 const heroAchievers = [
