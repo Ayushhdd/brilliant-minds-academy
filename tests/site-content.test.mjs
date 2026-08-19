@@ -25,6 +25,7 @@ test("contains the academy's core programmes and conversion paths", async () => 
   assert.match(page, /"@type": "FAQPage"/);
   assert.match(form, /Send enquiry on WhatsApp/);
   assert.match(form, /window\.location\.assign/);
+  assert.match(form, /vedic: \["Offline", "Online"\]/);
 });
 
 test("ships production metadata and required visual assets", async () => {

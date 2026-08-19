@@ -11,7 +11,7 @@ const programmeOptions = [
 
 const learningModes = {
   academy: ["Academy tuition · Offline"],
-  vedic: ["Sunday-only crash course"],
+  vedic: ["Offline", "Online"],
 };
 
 export default function EnquiryForm() {
