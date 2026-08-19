@@ -317,7 +317,7 @@ export default function ResultsShowcase() {
       </div>
 
       <div className="resultSourceBar" data-reveal>
-        <div><span aria-hidden="true">&#10003;</span><p><strong>{activeSession.sourceTitle}</strong> {activeSession.sourceCopy}</p></div>
+        <div><span aria-hidden="true">&#10003;</span><p><strong>{activeSession.sourceTitle}</strong> <span className="resultSourceCopy">{activeSession.sourceCopy}</span></p></div>
         <a href={activeSession.source} target="_blank" rel="noreferrer">View original result sheet &#8599;</a>
       </div>
 

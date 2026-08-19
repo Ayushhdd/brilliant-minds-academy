@@ -737,6 +737,22 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
 /* Phone-first content rails: related cards stay together instead of becoming one long vertical stack. */
 @media (max-width: 600px) {
   .section { padding: 66px 0; }
+  /* Mobile keeps the decision-making text and actions; supporting copy stays
+     available on wider layouts without making the single-column flow wordy. */
+  .dynamicStage p,
+  .dynamicImageCaption small,
+  .resultsHead > p,
+  .experienceProof span,
+  .resultSourceCopy,
+  .studentVoicesIntro > p,
+  .studentStoryCopy p,
+  .studentStoryLabel,
+  .journeyIntro > p:not(.mobileRailHint),
+  .journeyCard p,
+  .journeyStepMeta small,
+  .journeyDifferenceIntro > p:not(.differenceInteractionHint),
+  .vedicCopy > p,
+  .footerTop > p { display: none; }
   .experienceSection { padding: 48px 0; }
   .experienceGrid { gap: 30px; }
   .experienceNumber { min-height: 196px; padding: 20px; box-shadow: 8px 8px 0 var(--gold); }
@@ -744,7 +760,6 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .experienceStory h2 { font-size: 32px; line-height: 1.07; }
   .experienceProof div { padding: 12px 0; }
   .experienceProof strong { font-size: 14px; }
-  .experienceProof span { margin-top: 5px; font-size: 10px; line-height: 1.45; }
   .sectionHead { margin-bottom: 34px; }
   .journeySection { padding: 66px 0; }
   .vedicSection { padding: 54px 0; }
@@ -788,7 +803,12 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .footerTop > div { gap: 13px; font-size: 9px; }
   .footerBottom { padding-top: 14px; padding-bottom: 0; font-size: 8px; }
   .journeyGrid { gap: 30px; }
-  .journeyOrb { display: none; }
+  .journeyIntro { display: flex; flex-direction: column; }
+  .journeyOrb { order: -1; width: min(62vw, 240px) !important; height: min(62vw, 240px) !important; margin: 0 auto 28px !important; display: flex; }
+  .journeyOrb::before { inset: 30px; }
+  .journeyOrb::after { inset: 66px; }
+  .journeyOrb span, .journeyOrb b { font-size: 42px; }
+  .journeyOrb i { font-size: 30px; }
   .mobileRailHint { margin: 0 0 15px; display: flex; align-items: center; gap: 8px; color: #6b5730; font-size: 10px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
   .mobileRailHint span { color: var(--coral); font-size: 16px; line-height: .7; }
   .journeyRailHint { margin: 16px 0 0; color: var(--gold-light); }
@@ -800,26 +820,30 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
 
   .journeySteps { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 12px; overflow-x: auto; overflow-y: visible; border-left: 0; scroll-snap-type: x mandatory; scroll-padding-left: 0; overscroll-behavior-x: contain; }
   .journeyCard, .journeyCard.hasPhoto { flex: 0 0 min(78vw, 312px); min-height: 0; margin: 0; display: grid; grid-template-columns: 1fr; grid-template-rows: 160px 1fr; scroll-snap-align: start; scroll-snap-stop: always; }
-  .journeyCardContent { min-height: 188px; padding: 21px 20px; }
+  .journeyCardContent { min-height: 137px; padding: 21px 20px; }
   .journeyCard::before { display: none; }
   .journeyCard h3 { margin: 15px 0 8px; font-size: 21px; }
-  .journeyCard p { font-size: 12px; line-height: 1.58; }
   .journeyPhoto, .journeyCard.photoLeft .journeyPhoto { min-height: 160px; order: -1; }
   .journeyPhoto > span { right: 13px; bottom: 10px; font-size: 24px; }
 
-  .journeyDifferenceWide { width: calc(100% - 20px); margin-top: 52px; padding: 31px 18px; }
-  .journeyDifferenceIntro h3 { font-size: 28px; }
-  .differenceInteractionHint { margin-top: 13px !important; }
+  .journeyDifferenceWide { width: calc(100% - 20px); margin-top: 52px; padding: 29px 16px 27px; border-color: rgba(244,217,147,.92); background: radial-gradient(circle at 92% 4%, rgba(255,255,255,.7), transparent 27%), linear-gradient(135deg, #fff8e9 0%, #f6dc94 100%); box-shadow: 0 18px 42px rgba(0,18,42,.24), inset 0 1px 0 rgba(255,255,255,.95); }
+  .journeyDifferenceWide::before { inset: 10px; border-color: rgba(7,27,52,.16); }
+  .journeyDifferenceIntro h3 { font-size: 27px; }
+  .differenceInteractionHint { margin-top: 15px !important; }
   .desktopFlipHint { display: none; }
-  .mobileFlipHint { padding: 8px 10px; display: inline-flex; align-items: center; border: 1px solid rgba(10,46,78,.2); border-radius: 6px; background: rgba(255,255,255,.45); color: #173f68; box-shadow: inset 0 1px 0 rgba(255,255,255,.72); }
+  .mobileFlipHint { padding: 8px 10px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(10,46,78,.16); border-left: 3px solid var(--gold); border-radius: 7px; background: rgba(255,255,255,.62); color: #173f68; box-shadow: 0 5px 13px rgba(103,67,14,.08), inset 0 1px 0 rgba(255,255,255,.88); }
+  .mobileFlipHint::before { content: "↻"; color: var(--wine); font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: .7; }
   .journeyDifferenceGrid { margin: 18px -18px -5px 0; padding: 0 18px 12px 0; display: flex; gap: 16px; overflow-x: auto; overflow-y: visible; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
   .journeyDifferenceGrid article.differenceFlipCard { flex: 0 0 min(68vw, 272px); aspect-ratio: 13 / 10; min-height: 0; scroll-snap-align: start; scroll-snap-stop: always; }
-  .differenceFlipFace { padding: 19px; }
+  .differenceFlipFace { padding: 19px; border-color: rgba(244,217,147,.62); border-radius: 12px; box-shadow: 0 12px 24px rgba(0,23,48,.28), inset 0 1px 0 rgba(255,255,255,.18); }
+  .differenceFlipFront { background: radial-gradient(circle at 94% 9%, rgba(90,172,218,.22), transparent 24%), linear-gradient(155deg, #174a78 0%, #0b3158 58%, #071e3a 100%); }
+  .differenceFlipFront::before { right: 19px; left: 19px; }
+  .differenceFlipFront::after { content: ""; position: absolute; right: -28px; bottom: -46px; width: 145px; height: 145px; border: 1px solid rgba(244,217,147,.16); border-radius: 50%; box-shadow: 0 0 0 18px rgba(244,217,147,.035), 0 0 0 36px rgba(244,217,147,.02); pointer-events: none; }
   .differenceFlipBack { padding: 0; }
   .differenceIcon { top: 15px; right: 15px; }
-  .journeyDifferenceGrid strong { margin-top: 27px; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
-  .journeyDifferenceGrid p { margin-top: 9px; font-size: 10px; line-height: 1.45; overflow-wrap: anywhere; }
-  .differenceFlipFront .differenceTapHint { position: absolute; right: 13px; bottom: 13px; display: inline-flex !important; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.66); border-radius: 999px; background: var(--gold-light); color: #0a2d50; box-shadow: 0 6px 15px rgba(0,18,42,.32), inset 0 1px 0 rgba(255,255,255,.68); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 7px; font-weight: 950; letter-spacing: .08em; line-height: 1; text-transform: uppercase; animation: tapFlipPrompt 2.1s ease-in-out infinite; }
+  .journeyDifferenceGrid strong { position: relative; z-index: 1; margin-top: 27px; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+  .journeyDifferenceGrid p { position: relative; z-index: 1; display: block; margin: 9px 0 0; padding-right: 3px; color: #b7c9dc; font-size: 9px; line-height: 1.45; overflow-wrap: anywhere; }
+  .differenceFlipFront .differenceTapHint { position: absolute; z-index: 2; right: 13px; bottom: 13px; display: inline-flex !important; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.66); border-radius: 999px; background: var(--gold-light); color: #0a2d50; box-shadow: 0 6px 15px rgba(0,18,42,.32), inset 0 1px 0 rgba(255,255,255,.68); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 7px; font-weight: 950; letter-spacing: .08em; line-height: 1; text-transform: uppercase; animation: tapFlipPrompt 2.1s ease-in-out infinite; }
   .differenceTapHint i { color: var(--wine); font-family: Georgia, "Times New Roman", serif; font-size: 13px; font-style: normal; line-height: .7; }
 
   .tuitionGrid { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 16px; overflow-x: auto; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
@@ -831,10 +855,9 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .tuitionCard > a { font-size: 11px; }
 
   .studentVoicesGrid { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 12px; overflow-x: auto; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
-  .studentStoryCard { flex: 0 0 min(78vw, 312px); min-height: 350px; grid-template-rows: 180px 1fr; scroll-snap-align: start; scroll-snap-stop: always; }
+  .studentStoryCard { flex: 0 0 min(78vw, 312px); min-height: 306px; grid-template-rows: 180px 1fr; scroll-snap-align: start; scroll-snap-stop: always; }
   .studentStoryCopy { padding: 18px 17px 15px; }
   .studentStoryCopy h3 { margin: 10px 0 7px; font-size: 20px; }
-  .studentStoryCopy p { font-size: 10px; }
   .desktopStoryHint { display: none; }
   .mobileStoryHint { display: inline; }
 }
