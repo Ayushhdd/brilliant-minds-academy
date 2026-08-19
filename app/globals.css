@@ -266,7 +266,7 @@ main:focus { outline: none; }
 .differenceFlipBack img { object-fit: cover; object-position: center; }
 .differenceFlipBackDoubts img { object-position: 50% 44%; }
 .journeyDifferenceGrid span { display: block; color: var(--gold-light); font-family: Georgia, "Times New Roman", serif; font-size: 19px; }
-.differenceTapHint { display: none; }
+.differenceTapHint { display: none !important; }
 .differenceIcon { position: absolute; top: 23px; right: 22px; width: 38px; height: 38px; color: var(--gold-light); opacity: .92; filter: drop-shadow(0 3px 8px rgba(217,170,77,.18)); }
 .journeyDifferenceGrid strong { display: block; margin-top: 25px; color: white; font-size: 16px; line-height: 1.45; }
 .journeyDifferenceGrid p { margin: 12px 0 0; color: #a7b8ca; font-size: 12px; line-height: 1.65; }
@@ -795,9 +795,8 @@ footer { padding: 55px 0 24px; background: #030e1e; color: white; }
   .differenceIcon { top: 15px; right: 15px; }
   .journeyDifferenceGrid strong { margin-top: 27px; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
   .journeyDifferenceGrid p { margin-top: 9px; font-size: 10px; line-height: 1.45; overflow-wrap: anywhere; }
-  .differenceFlipFront .differenceTapHint { position: absolute; right: 13px; bottom: 13px; display: inline-flex; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.66); border-radius: 999px; background: var(--gold-light); color: #0a2d50; box-shadow: 0 6px 15px rgba(0,18,42,.32), inset 0 1px 0 rgba(255,255,255,.68); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 7px; font-weight: 950; letter-spacing: .08em; line-height: 1; text-transform: uppercase; animation: tapFlipPrompt 2.1s ease-in-out infinite; }
+  .differenceFlipFront .differenceTapHint { position: absolute; right: 13px; bottom: 13px; display: inline-flex !important; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.66); border-radius: 999px; background: var(--gold-light); color: #0a2d50; box-shadow: 0 6px 15px rgba(0,18,42,.32), inset 0 1px 0 rgba(255,255,255,.68); font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 7px; font-weight: 950; letter-spacing: .08em; line-height: 1; text-transform: uppercase; animation: tapFlipPrompt 2.1s ease-in-out infinite; }
   .differenceTapHint i { color: var(--wine); font-family: Georgia, "Times New Roman", serif; font-size: 13px; font-style: normal; line-height: .7; }
-  .differenceFlipBack::before { content: "Tap again to return"; position: absolute; z-index: 3; right: 12px; bottom: 12px; padding: 6px 8px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; background: rgba(7,27,52,.78); color: white; font-size: 7px; font-weight: 900; letter-spacing: .08em; line-height: 1; text-transform: uppercase; }
 
   .tuitionGrid { margin: 0 -14px 0 0; padding: 0 14px 10px 0; display: flex; gap: 16px; overflow-x: auto; grid-template-columns: none; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; }
   .tuitionCard { flex: 0 0 min(82vw, 336px); min-height: 304px; padding: 20px; scroll-snap-align: start; scroll-snap-stop: always; }
